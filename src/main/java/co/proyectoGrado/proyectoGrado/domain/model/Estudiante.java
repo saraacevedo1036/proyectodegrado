@@ -1,5 +1,10 @@
 package co.proyectoGrado.proyectoGrado.domain.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class Estudiante {
 
     private int idEstudiante;
@@ -10,4 +15,6 @@ public class Estudiante {
     private String contraseña;
     private boolean estado;
 
+    public Estudiante(int idEstudiantes, String nombre, String apellido, String contraseña, String correo, int identificacion, boolean equals) {
+    }
 }

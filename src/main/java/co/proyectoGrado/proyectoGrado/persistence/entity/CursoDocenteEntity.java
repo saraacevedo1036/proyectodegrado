@@ -19,7 +19,7 @@ public class CursoDocenteEntity {
     private DocenteEntity docente;
     @ManyToOne
     @JoinColumn(name="idCursos", insertable = false, updatable = false)
-    private CursoEntitiy curso;
+    private CursoEntity curso;
     @Column(name = "estado")
     private char estado;
 

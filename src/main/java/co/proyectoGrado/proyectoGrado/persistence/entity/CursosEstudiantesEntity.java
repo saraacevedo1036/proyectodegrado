@@ -1,6 +1,5 @@
 package co.proyectoGrado.proyectoGrado.persistence.entity;
 
-import co.proyectoGrado.proyectoGrado.domain.model.Curso;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,6 +19,6 @@ public class CursosEstudiantesEntity {
     private EstudianteEntity estudiante;
     @ManyToOne
     @JoinColumn(name="idCursos", insertable = false, updatable = false)
-    private CursoEntitiy curso;
+    private CursoEntity curso;
 
 }

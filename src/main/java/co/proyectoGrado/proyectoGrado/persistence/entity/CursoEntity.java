@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @Table( name = "CURSOS")
 @NoArgsConstructor
-public class CursoEntitiy {
+public class CursoEntity {
 
     @Id
     @Column(name = "idCursos")

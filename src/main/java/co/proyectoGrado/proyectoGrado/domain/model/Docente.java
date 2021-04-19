@@ -2,7 +2,7 @@ package co.proyectoGrado.proyectoGrado.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 @Data
 @AllArgsConstructor
@@ -14,4 +14,6 @@ public class Docente {
     private String correo;
     private String contrasena;
     private boolean estado;
+
+
 }

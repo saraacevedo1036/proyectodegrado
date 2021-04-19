@@ -19,7 +19,7 @@ public class CursoContenidoEntity {
     private CategoriaContenidoEntity categoriaContenido;
     @ManyToOne
     @JoinColumn(name="idCursos", insertable = false, updatable = false)
-    private CursoEntitiy curso;
+    private CursoEntity curso;
     @Column(name = "comentario")
     private String comentario;
     @Column(name = "descripcion")
