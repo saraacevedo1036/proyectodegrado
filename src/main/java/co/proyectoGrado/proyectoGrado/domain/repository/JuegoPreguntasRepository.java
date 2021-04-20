@@ -6,6 +6,7 @@ import co.proyectoGrado.proyectoGrado.domain.model.Reto;
 import java.util.List;
 
 public interface JuegoPreguntasRepository {
+
     List<Reto> getAll();
     Reto get(int idPreguntas);
     Reto getTitulo(int idRetos);

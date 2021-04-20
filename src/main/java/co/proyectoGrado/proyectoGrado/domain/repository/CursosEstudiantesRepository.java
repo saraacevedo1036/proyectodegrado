@@ -7,8 +7,10 @@ import co.proyectoGrado.proyectoGrado.domain.model.Docente;
 import java.util.List;
 
 public interface CursosEstudiantesRepository {
-    List<CursoDocente> getAll();
-    CursoDocente get(int idEstudiantes);
-    CursoDocente getIdCursos(int idCursos);
+
+    List<CursoEstudiante> getAll();
+    CursoEstudiante getIdEstudiantes(int idEstudiantes);
+    CursoEstudiante getIdCursos(int idCursos);
     boolean save(CursoEstudiante cursoEstudiante);
+
 }
