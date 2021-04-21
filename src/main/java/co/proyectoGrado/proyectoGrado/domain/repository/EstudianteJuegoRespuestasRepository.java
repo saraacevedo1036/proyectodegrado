@@ -7,8 +7,8 @@ import co.proyectoGrado.proyectoGrado.domain.model.Reto;
 import java.util.List;
 
 public interface EstudianteJuegoRespuestasRepository {
-    List<Reto> getAll();
-    Reto get(int idReto);
-    Reto getIdPreguntas(int idPreguntas);
+    List<EstudianteJuegoRespuesta> getAll();
+    EstudianteJuegoRespuesta get(int idEstudianteJuegoRespuesta);
+    EstudianteJuegoRespuesta getIdPreguntas(int idPreguntas);
     boolean save(EstudianteJuegoRespuesta estudianteJuegoRespuesta);
 }
