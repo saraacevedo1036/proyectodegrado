@@ -10,7 +10,7 @@ import java.util.List;
 public class CategoriaContenidoRespositoryImpl implements CategoriaContenidoRepository {
     @Override
     public List<CategoriaContenido> getAll() {
-        return null;
+        return (List<CategoriaContenido>) CategoriaContenidoRespositoryImpl.findAll();
     }
 
     @Override

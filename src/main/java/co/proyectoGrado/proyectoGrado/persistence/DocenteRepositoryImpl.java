@@ -84,4 +84,9 @@ public class DocenteRepositoryImpl implements DocenteRepository {
             return false;
         }
     }
+
+    @Override
+    public void delete(int idDocente) {
+        docenteCrud.deleteById(idDocente);
+    }
 }

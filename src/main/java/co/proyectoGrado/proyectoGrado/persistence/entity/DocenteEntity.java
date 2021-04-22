@@ -29,6 +29,7 @@ public class DocenteEntity {
     @Column(name = "estado")
     private char estado;
 
+
     @OneToMany(mappedBy = "docente")
     private List<CursoDocenteEntity> cursoDocentes;
 

@@ -9,6 +9,6 @@ public class EstudianteJuego {
 
     private int idEstudianteJuego;
     private double calificacion;
-    private int idReto;
-    private int idEstudiantes;
+    //private int idReto;
+    //private int idEstudiantes;
 }
