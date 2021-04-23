@@ -9,6 +9,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
+import java.util.List;
+
 @Mapper(componentModel = "Spring",uses = {CursoEstudianteMapper.class, CursoDocenteMapper.class,
         CursoContenidoMapper.class} )
 public interface CursoMapper {
@@ -17,10 +19,11 @@ public interface CursoMapper {
             @Mapping(source="grado",target="grado"),
             @Mapping(source="nombre",target="nombre"),
             @Mapping(source="cursoEstudiantes",target="cursoEstudiante"),
-            @Mapping(source="cursoDocentes",target="cursoDocente"),
-            @Mapping(source="cursoContenidos",target="cursoContenido")
+            @Mapping(source="cursoDocentes",target="CursoDocente"),
+            @Mapping(source="cursoContenidos",target="CursoContenido")
     })
     Curso toCurso(CursoEntity cursoEntity);
+    List<Curso> toCurso(List<Curso> Cursos);
     @InheritInverseConfiguration
     CursoEntity toCursoEntity(Curso curso);
 }

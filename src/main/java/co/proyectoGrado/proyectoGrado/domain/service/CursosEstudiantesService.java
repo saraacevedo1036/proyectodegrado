@@ -15,7 +15,7 @@ public class CursosEstudiantesService {
         this.cursosEstudiantesRepository = cursosEstudiantesRepository;
     }
 
-    public CursoEstudiante get(int idEstudiantes) {
+   public CursoEstudiante get(int idEstudiantes) {
         return cursosEstudiantesRepository.get(idEstudiantes);}
 
     public boolean save(CursoEstudiante cursoEstudiante)

@@ -10,6 +10,6 @@ import java.util.List;
 public class CategoriaContenido {
 
     private int idCategoria;
-  //  private List<Pregunta> pregunta;
+    private List<Pregunta> pregunta;
 
 }

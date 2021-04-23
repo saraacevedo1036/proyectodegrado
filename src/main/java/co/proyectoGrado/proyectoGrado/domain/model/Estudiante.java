@@ -12,7 +12,7 @@ public class Estudiante {
     private String apellido;
     private int identificacion;
     private String correo;
-    private String contraseña;
+    private String contrasena;
     private boolean estado;
 
     public Estudiante(int idEstudiantes, String nombre, String apellido, String contraseña, String correo, int identificacion, boolean equals) {

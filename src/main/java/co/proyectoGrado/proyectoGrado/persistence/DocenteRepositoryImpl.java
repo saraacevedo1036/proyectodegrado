@@ -68,7 +68,7 @@ public class DocenteRepositoryImpl implements DocenteRepository {
         try {
             DocenteEntity docenteEntity = new DocenteEntity();
 
-            docenteEntity.setIdDocentes(docente.getIdDocente());
+            docenteEntity.setIdDocentes(docente.getDocenteId());
             docenteEntity.setNombre(docente.getNombre());
             docenteEntity.setApellido(docente.getApellido());
             docenteEntity.setIdentificacion(docente.getIdentificacion());

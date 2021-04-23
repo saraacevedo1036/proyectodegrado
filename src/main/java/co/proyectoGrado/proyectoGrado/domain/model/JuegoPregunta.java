@@ -8,6 +8,6 @@ import lombok.Data;
 public class JuegoPregunta {
 
     private int idJuegoPreguntas;
-    //private int idPreguntas;
-   // private int idReto;
+    private int idPreguntas;
+    private int idReto;
 }
