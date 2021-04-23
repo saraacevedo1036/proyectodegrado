@@ -8,8 +8,8 @@ import java.util.List;
 public interface CursoRepository {
 
     List<Curso> getAll();
-    Curso get(String grado);
-    Curso getTitulo(String titulo);
+    Curso getByGrado(String grado);
+    Curso getByNombre(String nombre);
     boolean save(Curso curso);
 
 

@@ -6,7 +6,9 @@ import co.proyectoGrado.proyectoGrado.persistence.entity.DocenteEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CursoDocenteCrud extends CrudRepository<CursoDocenteEntity, Integer> {
+
     CursoDocenteEntity findFirstById(int idDocente);
-    CursoDocenteEntity findFirstByIdCurso(int idCurso);
+    CursoDocenteEntity findFirstByCurso_IdCursos(int idCurso);
+    CursoDocenteEntity findFirstByDocente_IdDocentes(int idDocente);
 
 }

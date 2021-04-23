@@ -1,12 +1,13 @@
 package co.proyectoGrado.proyectoGrado.domain.repository;
 
-import co.proyectoGrado.proyectoGrado.domain.model.Reto;
+
+import co.proyectoGrado.proyectoGrado.domain.model.Pregunta;
 
 import java.util.List;
 
 public interface PreguntaRepository {
-    List<Reto> getAll();
-    Reto get( int idpregunta);
-    boolean save(PreguntaRepository preguntaRepository);
+    List<Pregunta> getAll();
+    Pregunta get( int idpregunta);
+    boolean save(Pregunta pregunta);
 
 }

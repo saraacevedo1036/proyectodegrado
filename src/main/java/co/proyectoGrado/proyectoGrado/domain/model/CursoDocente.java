@@ -7,6 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class CursoDocente {
 
+    private int idCursoDocente;
     private int idDocente;
     private int idCursos;
     private boolean estado;

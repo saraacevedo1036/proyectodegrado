@@ -16,8 +16,8 @@ public class CategoriaContenidoService {
         this.categoriaContenidoRepository = categoriaContenidoRepository;
     }
 
-    public  CategoriaContenido get(int idCategoria) {
-        return categoriaContenidoRepository.get(idCategoria);
+    public  CategoriaContenido get(int idCategoriaContenido) {
+        return categoriaContenidoRepository.get(idCategoriaContenido);
     }
 
     public boolean save( CategoriaContenido categoriaContenido)

@@ -16,7 +16,7 @@ public class EstudianteJuegoRespuestasService {
 
     public EstudianteJuegoRespuestasService get(int idjuego_preguntas)
     {
-        return estudianteJuegoRespuestasRepository.get(idjuego_preguntas);
+        return estudianteJuegoRespuestasRepository.getByIdJuegoPregunta(idjuego_preguntas);
     }
 
     public boolean save(EstudianteJuegoRespuestasService estudianteJuegoRespuestasService) { return estudianteJuegoRespuestasRepository.save(estudianteJuegoRespuestasService); }

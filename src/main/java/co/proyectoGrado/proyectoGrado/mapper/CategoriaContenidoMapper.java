@@ -12,7 +12,7 @@ public interface CategoriaContenidoMapper {
     @Mappings( {
             @Mapping(source="idCategoriaContenido",target="IdCategoria"),
             @Mapping(source="pregunta",target="Pregunta"),
-            @Mapping(source="cursoContenido",target="CursoContenido")
+            @Mapping(source="cursoContenido",target="CursoContenido") //Posible eliminacion
 
     })
     CategoriaContenido toCategoriaContenido(CategoriaContenidoEntity categoriaContenidoEntity);

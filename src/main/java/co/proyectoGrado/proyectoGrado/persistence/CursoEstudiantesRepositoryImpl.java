@@ -13,6 +13,7 @@ import java.util.List;
 @Repository
 public class CursoEstudiantesRepositoryImpl implements CursosEstudiantesRepository {
     private final CursoEstudianteCrud cursoEstudianteCrud;
+    
 
     @Autowired
     public CursoEstudiantesRepositoryImpl(CursoEstudianteCrud cursoEstudianteCrud) {

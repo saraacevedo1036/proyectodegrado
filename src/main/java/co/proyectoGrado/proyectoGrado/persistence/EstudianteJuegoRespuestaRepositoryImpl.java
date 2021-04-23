@@ -38,7 +38,7 @@ public class EstudianteJuegoRespuestaRepositoryImpl implements EstudianteJuegoRe
     }
 
     @Override
-    public EstudianteJuegoRespuesta get(int idJuegoPregunta) {
+    public EstudianteJuegoRespuesta getByIdJuegoPregunta(int idJuegoPregunta) {
 
         EstudianteJuegoRespuestasEntity estudianteJuegoRespuestasEntity = estudianteJuegoRespuestasCrud.findFirstByIdJuegoPreguntas(idJuegoPregunta);
 
@@ -66,17 +66,15 @@ public class EstudianteJuegoRespuestaRepositoryImpl implements EstudianteJuegoRe
         }
     }
 
-    /*   private int idEstudianteJuegoRespuestas;
-private int idjuegoPreguntas;
-private int idpreguntas;
-private int idReto;
-*/
+
     @Override
     public boolean save(EstudianteJuegoRespuesta estudianteJuegoRespuesta) {
         try {
             EstudianteJuegoRespuestasEntity estudianteJuegoRespuestasEntity = new EstudianteJuegoRespuestasEntity();
             estudianteJuegoRespuestasEntity.setIdEstudianteJuegoRespuestas(estudianteJuegoRespuesta.getIdEstudianteJuegoRespuestas());
-           // estudianteJuegoRespuestasEntity.getEstudianteJuego().setIdEstudianteJuego(estudianteJuegoRespuesta.getIdj);
+            estudianteJuegoRespuestasEntity.getJuegoPregunta().setIdJuegoPreguntas(estudianteJuegoRespuesta.getIdjuegoPreguntas());
+            estudianteJuegoRespuesta.setIdPreguntas(estudianteJuegoRespuesta.getIdjuegoPreguntas());
+            estudianteJuegoRespuesta.setIdReto(estudianteJuegoRespuesta.getIdReto());
 
             estudianteJuegoRespuestasCrud.save(estudianteJuegoRespuestasEntity);
 

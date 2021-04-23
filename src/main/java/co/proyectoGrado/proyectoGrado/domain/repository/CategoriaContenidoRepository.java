@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CategoriaContenidoRepository {
     List<CategoriaContenido> getAll();
-    CategoriaContenido get(int idCategoria);
-    CategoriaContenido get(List pregunta);
+    CategoriaContenido get(int idCategoriaContenido);
+    CategoriaContenido getPregunta(int idPregunta);
     boolean save(CategoriaContenido categoriaContenido);
 }

@@ -9,11 +9,10 @@ import java.util.List;
 
 public interface CategoriaContenidoCrud extends CrudRepository<CategoriaContenidoEntity, Integer> {
 
-    CategoriaContenidoEntity findFirstByCursoContenido(int idCursoContenido);
 
     CategoriaContenidoEntity findFirstByIdCategoriaContenido(int idCategoriaContenido);
 
-    CategoriaContenidoEntity findFirstByIdCursos(int cursosIdCursos);
+    CategoriaContenidoEntity findFirstByPregunta_IdPregunta(int cursosIdCursos);
 
 }
 

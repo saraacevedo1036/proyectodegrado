@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface EstudianteJuegoRespuestasRepository {
     List<EstudianteJuegoRespuesta> getAll();
-    EstudianteJuegoRespuesta get(int idEstudianteJuegoRespuesta);
+    EstudianteJuegoRespuesta getByIdJuegoPregunta(int idEstudianteJuegoRespuesta);
     EstudianteJuegoRespuesta getIdPreguntas(int idPreguntas);
     boolean save(EstudianteJuegoRespuesta estudianteJuegoRespuesta);
 }

@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface RetoCrud extends CrudRepository<RetoEntity, Integer> {
     RetoEntity findFirstByTipo(String tipo);
-    RetoEntity findFirstByTitulo(int titulo);
+    RetoEntity findFirstByTitulo(String titulo);
 
 
 }

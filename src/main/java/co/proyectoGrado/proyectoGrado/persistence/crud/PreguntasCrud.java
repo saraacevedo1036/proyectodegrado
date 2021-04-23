@@ -6,7 +6,5 @@ import co.proyectoGrado.proyectoGrado.persistence.entity.RetoEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface PreguntasCrud extends CrudRepository<PreguntaEntity, Integer> {
-    PreguntaEntity findFirstByTipo(int idPreguntas);
-
-
+    PreguntaEntity findFirstByIdPregunta(int idPreguntas);
 }

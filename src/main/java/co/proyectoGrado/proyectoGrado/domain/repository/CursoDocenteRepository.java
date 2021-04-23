@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface CursoDocenteRepository {
     List<CursoDocente> getAll();
-    CursoDocente get(int idDocente);
+    CursoDocente get(int idCursoDocente);
+    CursoDocente getIdDocente(int idDocente);
     CursoDocente getIdCursos(int idCursos);
     boolean save(CursoDocente cursodocente);
 

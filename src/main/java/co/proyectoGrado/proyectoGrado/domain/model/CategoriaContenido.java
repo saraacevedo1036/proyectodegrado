@@ -9,7 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CategoriaContenido {
 
-    private int idCategoria;
-    private List<Pregunta> pregunta;
+    private int idCategoriaContenido;
+    private int idPregunta;
 
 }

@@ -1,6 +1,6 @@
 package co.proyectoGrado.proyectoGrado.domain.repository;
 
-import co.proyectoGrado.proyectoGrado.domain.model.Docente;
+
 import co.proyectoGrado.proyectoGrado.domain.model.Reto;
 
 import java.util.List;
