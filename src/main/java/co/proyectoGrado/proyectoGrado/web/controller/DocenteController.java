@@ -30,4 +30,16 @@ public class DocenteController {
         return new ResponseEntity<>(docenteService.save(docente), HttpStatus.CREATED);
     }
 
+    @PutMapping
+    public ResponseEntity<Boolean> actualizar(@PathVariable("id") int id, @RequestBody Docente docente){
+        return new ResponseEntity<>(docenteService.actualizar(id, docente), HttpStatus.OK);
+    }
+
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> eliminar(@PathVariable int id){
+        return new ResponseEntity<>(docenteService.eliminar(id), HttpStatus.OK);
+    }
+
 }

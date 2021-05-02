@@ -29,7 +29,10 @@ public class DocenteRepositoryImpl implements DocenteRepository {
                                             docenteEntity.getCorreo(), docenteEntity.getContrasena(),
                                             "S".equals(docenteEntity.getEstado()));
 
-            docentes.add(docente);
+            if(docente.isEstado()==true){
+                docentes.add(docente);
+            }
+
         });
 
         return docentes;
@@ -39,7 +42,7 @@ public class DocenteRepositoryImpl implements DocenteRepository {
     public Docente get(int identificacion) {
         DocenteEntity docenteEntity = docenteCrud.findFirstByIdentificacion(identificacion);
 
-        if (docenteEntity != null) {
+        if (docenteEntity != null && docenteEntity.getEstado()=='S') {
             return new Docente(docenteEntity.getIdDocentes(), docenteEntity.getNombre(),
                     docenteEntity.getApellido(), docenteEntity.getIdentificacion(),
                     docenteEntity.getCorreo(), docenteEntity.getContrasena(),
@@ -86,7 +89,42 @@ public class DocenteRepositoryImpl implements DocenteRepository {
     }
 
     @Override
-    public void delete(int idDocente) {
-        docenteCrud.deleteById(idDocente);
+    public Boolean actualizar(int id, Docente docente) {
+        if(docenteCrud.findById(id)!=null){
+            
+            try {
+
+                DocenteEntity docenteEntity = new DocenteEntity();
+
+                docenteEntity.setIdDocentes(docente.getDocenteId());
+                docenteEntity.setNombre(docente.getNombre());
+                docenteEntity.setApellido(docente.getApellido());
+                docenteEntity.setIdentificacion(docente.getIdentificacion());
+                docenteEntity.setCorreo(docente.getCorreo());
+                docenteEntity.setContrasena(docente.getContrasena());
+                docenteEntity.setEstado(docente.isEstado() ? 'S' : 'N');
+
+                docenteCrud.save(docenteEntity);
+
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    @Override
+    public boolean delete(int idDocente) {
+        if(docenteCrud.findByIdDocente(idDocente)!=null){
+            DocenteEntity docenteEntity = (DocenteEntity) docenteCrud.findByIdDocente(idDocente);
+            docenteEntity.setEstado('N');
+            docenteCrud.save(docenteEntity);
+            return true;
+        }else{
+            return false;
+        }
     }
 }

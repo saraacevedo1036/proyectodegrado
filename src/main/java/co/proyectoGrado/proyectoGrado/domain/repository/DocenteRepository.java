@@ -9,5 +9,6 @@ public interface DocenteRepository {
     Docente get(int identificacion);
     Docente get(String email);
     boolean save(Docente docente);
-    void delete(int idDocente);
+    boolean delete(int idDocente);
+    Boolean actualizar(int id, Docente docente);
 }

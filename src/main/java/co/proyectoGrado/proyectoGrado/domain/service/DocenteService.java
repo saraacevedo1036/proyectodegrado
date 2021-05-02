@@ -19,4 +19,14 @@ public class DocenteService {
     }
 
     public boolean save(Docente docente) { return docenteRepository.save(docente); }
+
+    public Boolean actualizar(int id, Docente docente) {
+    return  docenteRepository.actualizar(id, docente);
+    }
+
+    public boolean eliminar(int id){
+        return docenteRepository.delete(id);
+    }
+
+
 }
