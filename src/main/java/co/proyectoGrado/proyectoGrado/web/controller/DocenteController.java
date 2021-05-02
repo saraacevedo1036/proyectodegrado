@@ -30,7 +30,7 @@ public class DocenteController {
         return new ResponseEntity<>(docenteService.save(docente), HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Boolean> actualizar(@PathVariable("id") int id, @RequestBody Docente docente){
         return new ResponseEntity<>(docenteService.actualizar(id, docente), HttpStatus.OK);
     }

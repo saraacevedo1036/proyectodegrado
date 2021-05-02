@@ -91,7 +91,7 @@ public class DocenteRepositoryImpl implements DocenteRepository {
     @Override
     public Boolean actualizar(int id, Docente docente) {
         if(docenteCrud.findById(id)!=null){
-            
+
             try {
 
                 DocenteEntity docenteEntity = new DocenteEntity();
