@@ -1,6 +1,7 @@
 package co.proyectoGrado.proyectoGrado.web.controller;
 
 import co.proyectoGrado.proyectoGrado.domain.model.Docente;
+import co.proyectoGrado.proyectoGrado.domain.model.Estudiante;
 import co.proyectoGrado.proyectoGrado.domain.model.Reto;
 import co.proyectoGrado.proyectoGrado.domain.service.DocenteService;
 import co.proyectoGrado.proyectoGrado.domain.service.RetoService;
@@ -27,6 +28,17 @@ public class RetoController {
     @PostMapping()
     public ResponseEntity<Boolean> save(@RequestBody Reto reto) {
         return new ResponseEntity<>(retoService.save(reto), HttpStatus.CREATED);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Boolean> actualizar(@PathVariable("id") int id, @RequestBody Reto reto){
+        return new ResponseEntity<>(retoService.actualizar(id, reto), HttpStatus.OK);
+    }
+
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> eliminar(@PathVariable int id){
+        return new ResponseEntity<>(retoService.eliminar(id), HttpStatus.OK);
     }
 
 }

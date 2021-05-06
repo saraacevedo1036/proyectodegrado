@@ -10,5 +10,7 @@ public interface RetoRepository {
     List<Reto> getAll();
     Reto get(String tipo);
     Reto getTitulo(String titulo);
-    boolean save(Reto reto);
+    Boolean save(Reto reto);
+    Boolean actualizar(int id, Reto reto);
+    Boolean delete(int id);
 }

@@ -3,6 +3,7 @@ package co.proyectoGrado.proyectoGrado.persistence;
 import co.proyectoGrado.proyectoGrado.domain.model.Reto;
 import co.proyectoGrado.proyectoGrado.domain.repository.RetoRepository;
 import co.proyectoGrado.proyectoGrado.persistence.crud.RetoCrud;
+import co.proyectoGrado.proyectoGrado.persistence.entity.DocenteEntity;
 import co.proyectoGrado.proyectoGrado.persistence.entity.RetoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -56,7 +57,7 @@ public class RetoRepositoryImpl implements RetoRepository {
     }
 
     @Override
-    public boolean save(Reto reto) {
+    public Boolean save(Reto reto) {
         try{
             RetoEntity retoEntity = new RetoEntity();
             retoEntity.setIdReto(reto.getIdReto());
@@ -74,4 +75,36 @@ public class RetoRepositoryImpl implements RetoRepository {
     }
 
 
+
+    @Override
+    public Boolean actualizar(int id,Reto reto) {
+        try{
+            RetoEntity retoEntity = new RetoEntity();
+            retoEntity.setIdReto(reto.getIdReto());
+            retoEntity.setTipo(reto.getTipo());
+            retoEntity.setTitulo(reto.getTitulo());
+            retoEntity.setDescripcion(reto.getDescripcion());
+            retoEntity.setComentario(reto.getComentario());
+            retoEntity.setEstado(reto.isEstado()? 'S' : 'N');
+            retoCrud.save(retoEntity);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+
+
+    @Override
+    public Boolean delete(int idReto) {
+        if(retoCrud.findByIdReto(idReto)!=null){
+            RetoEntity retoEntity = (RetoEntity) retoCrud.findByIdReto(idReto);
+            retoCrud.save(retoEntity);
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
