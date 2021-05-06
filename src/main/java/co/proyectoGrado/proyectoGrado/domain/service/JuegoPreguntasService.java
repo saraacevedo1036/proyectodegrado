@@ -19,8 +19,17 @@ public class JuegoPreguntasService {
     }
 
     public  JuegoPregunta get(int idpreguntas) {
+
         return juegoPreguntasRepository.get(idpreguntas);
     }
 
     public boolean save(JuegoPregunta juegoPreguntas) { return juegoPreguntasRepository.save(juegoPreguntas); }
+
+    public Boolean actualizar(int id, JuegoPregunta juegoPregunta) {
+        return  juegoPreguntasRepository.actualizar(id, juegoPregunta);
+    }
+
+    public Boolean eliminar(int id) {
+        return juegoPreguntasRepository.delete(id);
+    }
 }

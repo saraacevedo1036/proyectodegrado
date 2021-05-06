@@ -7,10 +7,7 @@ import co.proyectoGrado.proyectoGrado.domain.service.EstudianteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 public class EstudianteJuegoController {
     private final EstudianteJuegoService estudianteJuegoService;
@@ -28,6 +25,17 @@ public class EstudianteJuegoController {
     @PostMapping()
     public ResponseEntity<Boolean> save(@RequestBody EstudianteJuego estudianteJuego) {
         return new ResponseEntity<>(estudianteJuegoService.save(estudianteJuego), HttpStatus.CREATED);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Boolean> actualizar(@PathVariable("id") int id, @RequestBody EstudianteJuego estudianteJuego){
+        return new ResponseEntity<>(estudianteJuegoService.actualizar(id, estudianteJuego), HttpStatus.OK);
+    }
+
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> eliminar(@PathVariable int id){
+        return new ResponseEntity<>(estudianteJuegoService.eliminar(id), HttpStatus.OK);
     }
 }
 

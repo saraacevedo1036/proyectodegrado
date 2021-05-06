@@ -21,14 +21,15 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
     public EstudianteRepositoryImpl(EstudianteCrud estudianteCrud) {
         this.estudianteCrud = estudianteCrud;
     }
+
     @Override
     public List<Estudiante> getAll() {
-        List<Estudiante>estudiantes = new ArrayList<>();
+        List<Estudiante> estudiantes = new ArrayList<>();
 
         estudianteCrud.findAll().forEach(estudianteEntity -> {
             Estudiante estudiante = new Estudiante(estudianteEntity.getIdEstudiantes(), estudianteEntity.getNombre(),
-                    estudianteEntity.getApellido(),estudianteEntity.getContraseña(),estudianteEntity.getCorreo(),
-                    estudianteEntity.getIdentificacion(),"S".equals(estudianteEntity.getEstado()));
+                    estudianteEntity.getApellido(), estudianteEntity.getContrasena(), estudianteEntity.getCorreo(),
+                    estudianteEntity.getIdentificacion(), "S".equals(estudianteEntity.getEstado()));
 
             estudiantes.add(estudiante);
         });
@@ -42,8 +43,8 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 
         if (estudianteEntity != null) {
             return new Estudiante(estudianteEntity.getIdEstudiantes(), estudianteEntity.getNombre(),
-                    estudianteEntity.getApellido(),estudianteEntity.getContraseña(),estudianteEntity.getCorreo(),
-                    estudianteEntity.getIdentificacion(),"S".equals(estudianteEntity.getEstado()));
+                    estudianteEntity.getApellido(), estudianteEntity.getContrasena(), estudianteEntity.getCorreo(),
+                    estudianteEntity.getIdentificacion(), "S".equals(estudianteEntity.getEstado()));
         } else {
             return null;
         }
@@ -55,8 +56,8 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
 
         if (estudianteEntity != null) {
             return new Estudiante(estudianteEntity.getIdEstudiantes(), estudianteEntity.getNombre(),
-                    estudianteEntity.getApellido(),estudianteEntity.getContraseña(),estudianteEntity.getCorreo(),
-                    estudianteEntity.getIdentificacion(),"S".equals(estudianteEntity.getEstado()));
+                    estudianteEntity.getApellido(), estudianteEntity.getContrasena(), estudianteEntity.getCorreo(),
+                    estudianteEntity.getIdentificacion(), "S".equals(estudianteEntity.getEstado()));
         } else {
             return null;
         }
@@ -70,7 +71,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
             estudianteEntity.setIdEstudiantes(estudiante.getIdEstudiante());
             estudianteEntity.setNombre(estudiante.getNombre());
             estudianteEntity.setApellido(estudiante.getApellido());
-            estudianteEntity.setContraseña(estudiante.getContraseña());
+            estudianteEntity.setContrasena(estudiante.getContrasena());
             estudianteEntity.setCorreo(estudiante.getCorreo());
 
             estudianteEntity.setIdentificacion(estudiante.getIdentificacion());
@@ -87,6 +88,45 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
         }
     }
 
+    @Override
+    public Boolean actualizar(int id, Estudiante estudiante) {
+        if (estudianteCrud.findById(id) != null) {
+            try {
+                EstudianteEntity estudianteEntity = new EstudianteEntity();
+
+                estudianteEntity.setIdEstudiantes(estudiante.getIdEstudiante());
+                estudianteEntity.setNombre(estudiante.getNombre());
+                estudianteEntity.setApellido(estudiante.getApellido());
+                estudianteEntity.setContrasena(estudiante.getContrasena());
+                estudianteEntity.setCorreo(estudiante.getCorreo());
+
+                estudianteEntity.setIdentificacion(estudiante.getIdentificacion());
+                estudianteEntity.setCorreo(estudiante.getCorreo());
+
+                estudianteEntity.setEstado(estudiante.isEstado() ? 'S' : 'N');
+
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
+
+    @Override
+    public boolean delete(int idEstudiante) {
+        if(estudianteCrud.findByIdEstudiante(idEstudiante)!=null){
+            EstudianteEntity  estudianteEntity = ( EstudianteEntity) estudianteCrud.findByIdEstudiante(idEstudiante);
+            estudianteEntity.setEstado('N');
+           estudianteCrud.save(estudianteEntity);
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 
 }

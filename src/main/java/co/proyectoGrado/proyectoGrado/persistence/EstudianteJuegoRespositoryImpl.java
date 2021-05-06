@@ -4,6 +4,7 @@ import co.proyectoGrado.proyectoGrado.domain.model.EstudianteJuego;
 import co.proyectoGrado.proyectoGrado.domain.model.Reto;
 import co.proyectoGrado.proyectoGrado.domain.repository.EstudianteJuegoRepository;
 import co.proyectoGrado.proyectoGrado.persistence.crud.EstudianteJuegoCrud;
+import co.proyectoGrado.proyectoGrado.persistence.entity.EstudianteEntity;
 import co.proyectoGrado.proyectoGrado.persistence.entity.EstudianteJuegoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -48,9 +49,9 @@ public class EstudianteJuegoRespositoryImpl implements EstudianteJuegoRepository
     }
 
     @Override
-    public EstudianteJuego getByIdEstudiantes(int idEstudiantes) {
+    public EstudianteJuego getByIdEstudiantes(int idEstudianteJuego) {
 
-        EstudianteJuegoEntity estudianteJuegoEntity = estudianteJuegoCrud.findFirstByEstudiante_IdEstudiantes(idEstudiantes);
+        EstudianteJuegoEntity estudianteJuegoEntity = estudianteJuegoCrud.findByIdEstudianteJuego(idEstudianteJuego);
         if(estudianteJuegoEntity!=null){
             return new EstudianteJuego(estudianteJuegoEntity.getIdEstudianteJuego(),
                     estudianteJuegoEntity.getCalificacion(),estudianteJuegoEntity.getReto().getIdReto(),
@@ -75,6 +76,32 @@ public class EstudianteJuegoRespositoryImpl implements EstudianteJuegoRepository
             return false;
         }
         return false;
+    }
+    @Override
+    public Boolean actualizar(int id,EstudianteJuego estudianteJuego) {
+        try{
+            EstudianteJuegoEntity estudianteJuegoEntity = new EstudianteJuegoEntity();
+
+            estudianteJuegoEntity.setIdEstudianteJuego(estudianteJuego.getIdEstudianteJuego());
+            estudianteJuegoEntity.setCalificacion(estudianteJuego.getCalificacion());
+            estudianteJuegoEntity.getReto().setIdReto(estudianteJuego.getIdReto());
+            estudianteJuegoEntity.getEstudiante().setIdEstudiantes(estudianteJuego.getIdEstudiantes());
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+    @Override
+    public Boolean delete(int idEstudianteJuego) {
+        if(estudianteJuegoCrud.findByIdEstudianteJuego(idEstudianteJuego)!=null){
+            EstudianteJuegoEntity estudianteJuegoEntity = ( EstudianteJuegoEntity) estudianteJuegoCrud.findByIdEstudianteJuego(idEstudianteJuego);
+            estudianteJuegoCrud.save(estudianteJuegoEntity);
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

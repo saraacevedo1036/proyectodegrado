@@ -22,4 +22,12 @@ public class CategoriaContenidoService {
 
     public boolean save( CategoriaContenido categoriaContenido)
     { return categoriaContenidoRepository.save(categoriaContenido); }
+
+    public Boolean actualizar(int id, CategoriaContenido categoriaContenido) {
+        return  categoriaContenidoRepository.actualizar(id, categoriaContenido);
+    }
+
+    public Boolean eliminar(int id) {
+        return categoriaContenidoRepository.delete(id);
+    }
 }

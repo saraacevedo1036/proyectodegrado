@@ -24,4 +24,13 @@ public class CursoContenidoService {
 
     public boolean save(CursoContenido cursoContenido)
     { return  cursoContenidoRepository.save(cursoContenido); }
+
+    public Boolean actualizar(int id, CursoContenido cursoContenido) {
+        return  cursoContenidoRepository.actualizar(id, cursoContenido);
+    }
+
+    public Boolean eliminar(int id) {
+        return cursoContenidoRepository.delete(id);
+    }
+
 }

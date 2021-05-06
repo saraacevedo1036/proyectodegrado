@@ -10,4 +10,6 @@ public interface EstudianteJuegoRepository {
     EstudianteJuego getByIdReto(int idReto);
     EstudianteJuego getByIdEstudiantes(int idEstudiantes);
     boolean save(EstudianteJuego estudianteJuego);
+    Boolean actualizar(int id, EstudianteJuego estudianteJuego);
+    Boolean delete(int id);
 }

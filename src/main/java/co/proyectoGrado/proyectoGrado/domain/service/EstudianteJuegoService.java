@@ -17,4 +17,12 @@ public class EstudianteJuegoService {
     }
 
     public boolean save(EstudianteJuego estudianteJuego) { return estudianteJuegoRepository.save(estudianteJuego); }
+
+    public Boolean actualizar(int id, EstudianteJuego estudianteJuego) {
+        return  estudianteJuegoRepository.actualizar(id, estudianteJuego);
+    }
+
+    public Boolean eliminar(int id) {
+        return estudianteJuegoRepository.delete(id);
+    }
 }

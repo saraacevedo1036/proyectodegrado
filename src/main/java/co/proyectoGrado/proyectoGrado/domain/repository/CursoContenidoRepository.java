@@ -11,5 +11,6 @@ public interface CursoContenidoRepository {
     CursoContenido getidCategoria(int idCategoriaContenido);
     CursoContenido getCursosiId(int cursosIdCursos);
     boolean save(CursoContenido cursoContenido);
-
+    boolean actualizar(int id, CursoContenido cursoContenido);
+    boolean delete(int id);
 }

@@ -29,5 +29,16 @@ public class CursoContenidoController {
     public ResponseEntity<Boolean> save(@RequestBody CursoContenido cursoContenido) {
         return new ResponseEntity<>(cursoContenidoService.save(cursoContenido), HttpStatus.CREATED);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Boolean> actualizar(@PathVariable("id") int id, @RequestBody CursoContenido cursoContenido){
+        return new ResponseEntity<>(cursoContenidoService.actualizar(id, cursoContenido), HttpStatus.OK);
+    }
+
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> eliminar(@PathVariable int id){
+        return new ResponseEntity<>(cursoContenidoService.eliminar(id), HttpStatus.OK);
+    }
 
 }

@@ -4,6 +4,7 @@ import co.proyectoGrado.proyectoGrado.domain.model.CategoriaContenido;
 import co.proyectoGrado.proyectoGrado.domain.repository.CategoriaContenidoRepository;
 import co.proyectoGrado.proyectoGrado.persistence.crud.CategoriaContenidoCrud;
 import co.proyectoGrado.proyectoGrado.persistence.entity.CategoriaContenidoEntity;
+import co.proyectoGrado.proyectoGrado.persistence.entity.DocenteEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -35,13 +36,14 @@ public class CategoriaContenidoRespositoryImpl implements CategoriaContenidoRepo
 
         return categoriaContenidos;
     }
+
     @Override
     public CategoriaContenido get(int idCategoriaContenido) {
 
-        CategoriaContenidoEntity categoriaContenidoEntity = categoriaContenidoCrud.findFirstByIdCategoriaContenido(idCategoriaContenido);
+        CategoriaContenidoEntity categoriaContenidoEntity = CategoriaContenidoCrud.findByIdCategoriaContenido(idCategoriaContenido);
 
         if (categoriaContenidoEntity != null) {
-            return  new CategoriaContenido(categoriaContenidoEntity.getIdCategoriaContenido(),
+            return new CategoriaContenido(categoriaContenidoEntity.getIdCategoriaContenido(),
                     categoriaContenidoEntity.getPregunta().getIdPregunta());
         } else {
             return null;
@@ -51,10 +53,10 @@ public class CategoriaContenidoRespositoryImpl implements CategoriaContenidoRepo
     @Override
     public CategoriaContenido getPregunta(int idPregunta) {
 
-        CategoriaContenidoEntity categoriaContenidoEntity = categoriaContenidoCrud.findFirstByPregunta_IdPregunta(idPregunta);
+        CategoriaContenidoEntity categoriaContenidoEntity = categoriaContenidoCrud.findByPregunta_IdPregunta(idPregunta);
 
         if (categoriaContenidoEntity != null) {
-            return  new CategoriaContenido(categoriaContenidoEntity.getIdCategoriaContenido(),
+            return new CategoriaContenido(categoriaContenidoEntity.getIdCategoriaContenido(),
                     categoriaContenidoEntity.getPregunta().getIdPregunta());
         } else {
             return null;
@@ -63,19 +65,44 @@ public class CategoriaContenidoRespositoryImpl implements CategoriaContenidoRepo
 
     @Override
     public boolean save(CategoriaContenido categoriaContenido) {
-        try{
+        try {
             CategoriaContenidoEntity categoriaContenidoEntity = new CategoriaContenidoEntity();
             categoriaContenidoEntity.setIdCategoriaContenido(categoriaContenido.getIdCategoriaContenido());
             categoriaContenidoEntity.getPregunta().setIdPregunta(categoriaContenido.getIdPregunta());
-          //  categoriaContenidoEntity.setPregunta(preguntasCrud.findById(categoriaContenido.getIdPregunta()));
+            //  categoriaContenidoEntity.setPregunta(preguntasCrud.findById(categoriaContenido.getIdPregunta()));
             categoriaContenidoCrud.save(categoriaContenidoEntity);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-
-
     }
+
+    @Override
+    public Boolean actualizar(int id, CategoriaContenido categoriaContenido) {
+        try {
+            CategoriaContenidoEntity categoriaContenidoEntity = new CategoriaContenidoEntity();
+            categoriaContenidoEntity.setIdCategoriaContenido(categoriaContenido.getIdCategoriaContenido());
+            categoriaContenidoEntity.getPregunta().setIdPregunta(categoriaContenido.getIdPregunta());
+            //  categoriaContenidoEntity.setPregunta(preguntasCrud.findById(categoriaContenido.getIdPregunta()));
+            categoriaContenidoCrud.save(categoriaContenidoEntity);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean delete(int idCategoriaContenido) {
+        if(CategoriaContenidoCrud.findByIdCategoriaContenido(idCategoriaContenido)!=null){
+            CategoriaContenidoEntity categoriaContenidoEntity = (CategoriaContenidoEntity) CategoriaContenidoCrud.findByIdCategoriaContenido(idCategoriaContenido);
+             categoriaContenidoCrud.save(categoriaContenidoEntity);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
 }

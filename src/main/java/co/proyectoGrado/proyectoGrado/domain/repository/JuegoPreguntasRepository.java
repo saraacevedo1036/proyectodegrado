@@ -11,4 +11,6 @@ public interface JuegoPreguntasRepository {
     Reto get(int idPreguntas);
     Reto getTitulo(int idRetos);
     boolean save(JuegoPregunta juegoPregunta);
+    Boolean actualizar(int id, JuegoPregunta juegoPregunta);
+    Boolean delete(int id);
 }
