@@ -3,7 +3,6 @@ package co.proyectoGrado.proyectoGrado.persistence;
 import co.proyectoGrado.proyectoGrado.domain.model.CategoriaContenido;
 import co.proyectoGrado.proyectoGrado.domain.repository.CategoriaContenidoRepository;
 import co.proyectoGrado.proyectoGrado.persistence.crud.CategoriaContenidoCrud;
-import co.proyectoGrado.proyectoGrado.persistence.crud.PreguntasCrud;
 import co.proyectoGrado.proyectoGrado.persistence.entity.CategoriaContenidoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

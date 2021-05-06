@@ -8,5 +8,5 @@ public interface CursoEstudianteCrud extends CrudRepository<CursosEstudiantesEnt
 
     CursosEstudiantesEntity findFirstByIdEstudiante(int idEstudiantes);
     CursosEstudiantesEntity findFirstByIdCursos(int idCursos);
-
+    CursosEstudiantesEntity findByIdCursoEstudiantes(int idCursoEstudiantes);
 }

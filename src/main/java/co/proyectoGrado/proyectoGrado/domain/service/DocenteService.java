@@ -25,6 +25,7 @@ public class DocenteService {
     }
 
     public boolean eliminar(int id){
+
         return docenteRepository.delete(id);
     }
 

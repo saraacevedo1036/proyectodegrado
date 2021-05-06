@@ -27,6 +27,7 @@ public class CursoRepositoryImpl implements CursoRepository {
             Curso curso = new Curso(cursoEntity.getIdCursos(),
                     cursoEntity.getGrado(),
                     cursoEntity.getNombre());
+
             cursos.add(curso);
         });
         return cursos;
@@ -35,11 +36,11 @@ public class CursoRepositoryImpl implements CursoRepository {
     @Override
     public Curso getByGrado(String grado) {
         CursoEntity cursoEntity = cursoCrud.findFirstByGrado(grado);
-        if(cursoEntity!=null){
+        if (cursoEntity != null) {
             return new Curso(cursoEntity.getIdCursos(),
                     cursoEntity.getGrado(),
                     cursoEntity.getNombre());
-        }else{
+        } else {
             return null;
         }
     }
@@ -48,17 +49,17 @@ public class CursoRepositoryImpl implements CursoRepository {
     @Override
     public Curso getByNombre(String nombre) {
         CursoEntity cursoEntity = cursoCrud.findFirstByNombre(nombre);
-        if(cursoEntity!=null){
+        if (cursoEntity != null) {
             return new Curso(cursoEntity.getIdCursos(),
                     cursoEntity.getGrado(),
                     cursoEntity.getNombre());
-        }else{
+        } else {
             return null;
         }
     }
 
     @Override
-    public boolean save(Curso curso) {
+    public Boolean save(Curso curso) {
         try {
             CursoEntity cursoEntity = new CursoEntity();
             cursoEntity.setIdCursos(curso.getIdCursos());
@@ -67,7 +68,7 @@ public class CursoRepositoryImpl implements CursoRepository {
 
             cursoCrud.save(cursoEntity);
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
             return false;
@@ -75,5 +76,42 @@ public class CursoRepositoryImpl implements CursoRepository {
         return false;
     }
 
+  
 
+    @Override
+    public Boolean actualizar(int id, Curso curso) {
+        if (cursoCrud.findById(id) != null) {
+            try {
+                CursoEntity cursoEntity = new CursoEntity();
+                cursoEntity.setIdCursos(curso.getIdCursos());
+                cursoEntity.setGrado(curso.getGrado());
+                cursoEntity.setNombre(curso.getNombre());
+
+                cursoCrud.save(cursoEntity);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        } else {
+            return false;
+        }
+        return null;
+    }
+
+
+
+
+
+    @Override
+    public Boolean delete(int idCurso) {
+
+        if (cursoCrud.findByIdCurso(idCurso) != null) {
+            CursoEntity cursoEntity = (CursoEntity) cursoCrud.findByIdCurso(idCurso);
+            cursoCrud.save(cursoEntity);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

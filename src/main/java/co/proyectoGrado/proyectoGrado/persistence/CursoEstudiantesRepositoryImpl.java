@@ -71,6 +71,36 @@ public class CursoEstudiantesRepositoryImpl implements CursosEstudiantesReposito
         }
     }
 
+    @Override
 
+    public Boolean actualizar(int id,CursoEstudiante cursoEstudiante) {
+        try {
+            CursosEstudiantesEntity cursosEstudiantesEntity = new CursosEstudiantesEntity();
 
+            cursosEstudiantesEntity.getEstudiante().setIdentificacion(cursoEstudiante.getIdEstudiantes());
+            cursosEstudiantesEntity.getCurso().setIdCursos(cursoEstudiante.getIdCursos());
+
+            cursoEstudianteCrud.save(cursosEstudiantesEntity);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    @Override
+    public Boolean delete(int idCursoEstudiantes) {
+        if(cursoEstudianteCrud.findByIdCursoEstudiantes(idCursoEstudiantes)!=null){
+            CursosEstudiantesEntity cursosEstudianteEntity = (CursosEstudiantesEntity) cursoEstudianteCrud.findByIdCursoEstudiantes(idCursoEstudiantes);
+            cursoEstudianteCrud.save(cursosEstudianteEntity);
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
+
+
+
+

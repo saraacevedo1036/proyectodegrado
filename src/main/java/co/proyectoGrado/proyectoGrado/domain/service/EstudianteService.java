@@ -25,4 +25,12 @@ public class EstudianteService {
     }
 
 
+    public Boolean actualizar(int id, Estudiante estudiante) {
+        return  estudianteRepository.actualizar(id, estudiante);
+    }
+
+    public Boolean eliminar(int id){
+        return estudianteRepository.delete(id);
+    }
+
 }

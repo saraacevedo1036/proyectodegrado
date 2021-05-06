@@ -10,7 +10,7 @@ public interface CursoRepository {
     List<Curso> getAll();
     Curso getByGrado(String grado);
     Curso getByNombre(String nombre);
-    boolean save(Curso curso);
-
-
+    Boolean save(Curso curso);
+    Boolean actualizar(int id, Curso curso);
+    Boolean delete(int idCurso);
 }

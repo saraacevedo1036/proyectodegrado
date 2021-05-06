@@ -10,6 +10,7 @@ public interface CursoDocenteRepository {
     CursoDocente get(int idCursoDocente);
     CursoDocente getIdDocente(int idDocente);
     CursoDocente getIdCursos(int idCursos);
-    boolean save(CursoDocente cursodocente);
-
+    Boolean save(CursoDocente cursodocente);
+    Boolean actualizar(int id, CursoDocente cursodocente);
+    Boolean delete(int id);
 }

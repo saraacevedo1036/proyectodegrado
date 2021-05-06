@@ -28,4 +28,16 @@ public class EstudianteController {
     public ResponseEntity<Boolean> save(@RequestBody Estudiante estudiante) {
         return new ResponseEntity<>(estudianteService.save(estudiante), HttpStatus.CREATED);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Boolean> actualizar(@PathVariable("id") int id, @RequestBody Estudiante estudiante){
+        return new ResponseEntity<>(estudianteService.actualizar(id, estudiante), HttpStatus.OK);
+    }
+
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> eliminar(@PathVariable int id){
+        return new ResponseEntity<>(estudianteService.eliminar(id), HttpStatus.OK);
+    }
+
 }

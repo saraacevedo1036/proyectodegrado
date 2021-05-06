@@ -1,5 +1,6 @@
 package co.proyectoGrado.proyectoGrado.domain.service;
 
+import co.proyectoGrado.proyectoGrado.domain.model.EstudianteJuegoRespuesta;
 import co.proyectoGrado.proyectoGrado.domain.repository.EstudianteJuegoRespuestasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public class EstudianteJuegoRespuestasService {
         this.estudianteJuegoRespuestasRepository = estudianteJuegoRespuestasRepository;
     }
 
-    public EstudianteJuegoRespuestasService get(int idjuego_preguntas)
+    public EstudianteJuegoRespuesta get(int idjuego_preguntas)
     {
         return estudianteJuegoRespuestasRepository.getByIdJuegoPregunta(idjuego_preguntas);
     }

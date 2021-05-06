@@ -1,8 +1,8 @@
 package co.proyectoGrado.proyectoGrado.persistence;
 
 import co.proyectoGrado.proyectoGrado.domain.model.EstudianteJuegoRespuesta;
-import co.proyectoGrado.proyectoGrado.domain.model.Reto;
 import co.proyectoGrado.proyectoGrado.domain.repository.EstudianteJuegoRespuestasRepository;
+import co.proyectoGrado.proyectoGrado.domain.service.EstudianteJuegoRespuestasService;
 import co.proyectoGrado.proyectoGrado.persistence.crud.EstudianteJuegoRespuestasCrud;
 import co.proyectoGrado.proyectoGrado.persistence.entity.EstudianteJuegoRespuestasEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +68,7 @@ public class EstudianteJuegoRespuestaRepositoryImpl implements EstudianteJuegoRe
 
 
     @Override
-    public boolean save(EstudianteJuegoRespuesta estudianteJuegoRespuesta) {
+    public boolean save(EstudianteJuegoRespuestasService estudianteJuegoRespuesta) {
         try {
             EstudianteJuegoRespuestasEntity estudianteJuegoRespuestasEntity = new EstudianteJuegoRespuestasEntity();
             estudianteJuegoRespuestasEntity.setIdEstudianteJuegoRespuestas(estudianteJuegoRespuesta.getIdEstudianteJuegoRespuestas());

@@ -12,14 +12,22 @@ public class PreguntaService {
     private final PreguntaRepository preguntaRepository;
 
     @Autowired
-
-    public PreguntaService(PreguntaRepository preguntaRepository) { this.preguntaRepository = preguntaRepository; }
+    public PreguntaService(PreguntaRepository preguntaRepository) {
+        this.preguntaRepository = preguntaRepository; }
 
     public Pregunta get(int idPreguntas) {
         return preguntaRepository.get(idPreguntas);
     }
 
-    public boolean save(Pregunta preguntas) {
+    public boolean save(Pregunta pregunta) {
         return preguntaRepository.save(pregunta);
+    }
+
+    public Boolean actualizar(int id, Pregunta pregunta) {
+        return  preguntaRepository.actualizar(id,pregunta);
+    }
+
+    public Boolean eliminar(int id) {
+        return preguntaRepository.delete(id);
     }
 }

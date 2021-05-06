@@ -18,4 +18,12 @@ public class CursoService {
     }
 
     public boolean save(Curso curso) { return cursoRepository.save(curso); }
+
+    public Boolean actualizar(int id, Curso curso) {
+        return  cursoRepository.actualizar(id, curso);
+    }
+    public Boolean eliminar(int id) {
+
+        return cursoRepository.delete(id);
+    }
 }
