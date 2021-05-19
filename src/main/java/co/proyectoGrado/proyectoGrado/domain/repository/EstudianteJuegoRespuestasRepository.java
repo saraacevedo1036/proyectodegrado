@@ -6,9 +6,10 @@ import java.util.List;
 
 public interface EstudianteJuegoRespuestasRepository {
     List<EstudianteJuegoRespuesta> getAll();
-    EstudianteJuegoRespuesta getByIdJuegoPregunta(int idEstudianteJuegoRespuesta);
+    EstudianteJuegoRespuesta getByIdJuegoPregunta(int idJuegoPregunta);
     EstudianteJuegoRespuesta getIdPreguntas(int idPreguntas);
     boolean save(EstudianteJuegoRespuesta estudianteJuegoRespuesta);
-    Boolean actualizar(int id, EstudianteJuegoRespuesta estudianteJuegoRespuesta);
-    Boolean delete(int id);
+    boolean actualizar(int id, EstudianteJuegoRespuesta estudianteJuegoRespuesta);
+    boolean delete(int id);
+
 }

@@ -68,7 +68,7 @@ public class DocenteRepositoryImpl implements DocenteRepository {
 
     @Override
     public boolean save(Docente docente) {
-        try {
+        try{
             DocenteEntity docenteEntity = new DocenteEntity();
 
             docenteEntity.setIdDocentes(docente.getDocenteId());

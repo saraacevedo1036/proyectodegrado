@@ -34,8 +34,6 @@ public class CursoController {
         return new ResponseEntity<>(cursoService.actualizar(id, curso), HttpStatus.OK);
     }
 
-
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> eliminar(@PathVariable int id){
         return new ResponseEntity<>(cursoService.eliminar(id), HttpStatus.OK);

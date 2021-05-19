@@ -21,6 +21,8 @@ public class EstudianteJuegoRespuestasEntity {
     private int idpreguntas;
     @Column(name= "idreto")
     private int idReto;
+    @Column(name="estado")
+    private char estado;
 
     @OneToOne(mappedBy = "estudianteJuegoRespuesta")
     private EstudianteJuegoEntity estudianteJuego;

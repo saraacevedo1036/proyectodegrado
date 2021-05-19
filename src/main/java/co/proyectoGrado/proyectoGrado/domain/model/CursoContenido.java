@@ -9,7 +9,7 @@ public class CursoContenido {
 
     private int idCursoContenido;
     private int idCategoriaContenido;
-    private int Curso;
+    private int idCurso;
     private String comentario;
     private String descripcion;
     private String imagen;

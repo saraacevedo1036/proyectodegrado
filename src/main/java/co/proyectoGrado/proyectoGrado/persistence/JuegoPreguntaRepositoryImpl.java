@@ -1,9 +1,10 @@
-package co.proyectoGrado.proyectoGrado.persistence.entity;
+package co.proyectoGrado.proyectoGrado.persistence;
 
 import co.proyectoGrado.proyectoGrado.domain.model.JuegoPregunta;
 import co.proyectoGrado.proyectoGrado.domain.model.Reto;
 import co.proyectoGrado.proyectoGrado.domain.repository.JuegoPreguntasRepository;
 import co.proyectoGrado.proyectoGrado.persistence.crud.JuegoPreguntasCrud;
+import co.proyectoGrado.proyectoGrado.persistence.entity.JuegoPreguntasEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -37,13 +38,13 @@ public class JuegoPreguntaRepositoryImpl implements JuegoPreguntasRepository {
 
     @Override
     public Boolean delete(int idJuegoPreguntas) {
-        if (JuegoPreguntasCrud.findByIdJuegoPreguntas(idJuegoPreguntas) != null) {
-            JuegoPreguntasEntity  juegoPreguntasEntity = (JuegoPreguntasEntity) juegoPreguntasCrud.findByIJuegoPreguntas(idJuegoPreguntas);
+   /*     if (JuegoPreguntasCrud.findByIdJuegoPreguntas(idJuegoPreguntas) != null) {
+            JuegoPreguntasEntity juegoPreguntasEntity = (JuegoPreguntasEntity) juegoPreguntasCrud.findByIJuegoPreguntas(idJuegoPreguntas);
             juegoPreguntasEntity.save( juegoPreguntasEntity);
             return true;
         } else {
             return false;
-        }
-
+        }*/
+        return false;
     }
 }

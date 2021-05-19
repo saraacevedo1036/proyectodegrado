@@ -30,7 +30,7 @@ public class EstudianteJuegoRespuestaRepositoryImpl implements EstudianteJuegoRe
         estudianteJuegoRespuestasCrud.findAll().forEach(estudianteJuegoRespuestasEntity -> {
             EstudianteJuegoRespuesta estudianteJuegoRespuesta = new EstudianteJuegoRespuesta(estudianteJuegoRespuestasEntity.getIdEstudianteJuegoRespuestas(),
                     estudianteJuegoRespuestasEntity.getIdpreguntas(),estudianteJuegoRespuestasEntity.getIdpreguntas(),
-                    estudianteJuegoRespuestasEntity.getIdReto());
+                    estudianteJuegoRespuestasEntity.getIdReto(),"S".equals(estudianteJuegoRespuestasEntity.getEstado()));
             estudianteJuegoRespuestas.add(estudianteJuegoRespuesta);
         });
         return estudianteJuegoRespuestas;
@@ -39,12 +39,12 @@ public class EstudianteJuegoRespuestaRepositoryImpl implements EstudianteJuegoRe
     @Override
     public EstudianteJuegoRespuesta getByIdJuegoPregunta(int idJuegoPregunta) {
 
-        EstudianteJuegoRespuestasEntity estudianteJuegoRespuestasEntity = estudianteJuegoRespuestasCrud.findFirstByIdJuegoPreguntas(idJuegoPregunta);
+        EstudianteJuegoRespuestasEntity estudianteJuegoRespuestasEntity = estudianteJuegoRespuestasCrud.findByJuegoPregunta_IdJuegoPreguntas(idJuegoPregunta);
 
         if (estudianteJuegoRespuestasEntity != null) {
             return new  EstudianteJuegoRespuesta(estudianteJuegoRespuestasEntity.getIdEstudianteJuegoRespuestas(),
                     estudianteJuegoRespuestasEntity.getIdpreguntas(),estudianteJuegoRespuestasEntity.getIdpreguntas(),
-                    estudianteJuegoRespuestasEntity.getIdReto());
+                    estudianteJuegoRespuestasEntity.getIdReto(),"S".equals(estudianteJuegoRespuestasEntity.getEstado()));
         } else {
             return null;
         }
@@ -54,12 +54,12 @@ public class EstudianteJuegoRespuestaRepositoryImpl implements EstudianteJuegoRe
     @Override
     public EstudianteJuegoRespuesta getIdPreguntas(int idPreguntas) {
 
-        EstudianteJuegoRespuestasEntity estudianteJuegoRespuestasEntity = estudianteJuegoRespuestasCrud.findFirstByIdPreguntas(idPreguntas);
+        EstudianteJuegoRespuestasEntity estudianteJuegoRespuestasEntity = estudianteJuegoRespuestasCrud.findByIdpreguntas(idPreguntas);
 
         if (estudianteJuegoRespuestasEntity != null) {
             return new  EstudianteJuegoRespuesta(estudianteJuegoRespuestasEntity.getIdEstudianteJuegoRespuestas(),
                     estudianteJuegoRespuestasEntity.getIdpreguntas(),estudianteJuegoRespuestasEntity.getIdpreguntas(),
-                    estudianteJuegoRespuestasEntity.getIdReto());
+                    estudianteJuegoRespuestasEntity.getIdReto(),"S".equals(estudianteJuegoRespuestasEntity.getEstado()));
         } else {
             return null;
         }
@@ -68,12 +68,14 @@ public class EstudianteJuegoRespuestaRepositoryImpl implements EstudianteJuegoRe
 
     @Override
     public boolean save(EstudianteJuegoRespuesta estudianteJuegoRespuesta) {
+
         try {
+
             EstudianteJuegoRespuestasEntity estudianteJuegoRespuestasEntity = new EstudianteJuegoRespuestasEntity();
-            estudianteJuegoRespuestasEntity.setIdEstudianteJuegoRespuestas(estudianteJuegoRespuestasEntity.getIdEstudianteJuegoRespuestas());
-            estudianteJuegoRespuestasEntity.getJuegoPregunta().setIdJuegoPreguntas(estudianteJuegoRespuestasEntity.getIdpreguntas());
-            estudianteJuegoRespuestasEntity.getJuegoPregunta().setPregunta(estudianteJuegoRespuestasEntity.getjuegoPregunta());
-            estudianteJuegoRespuestasEntity.getJuegoPregunta().setReto(estudianteJuegoRespuestasEntity.getIdReto());
+            estudianteJuegoRespuestasEntity.setIdEstudianteJuegoRespuestas(estudianteJuegoRespuesta.getIdEstudianteJuegoRespuestas());
+            estudianteJuegoRespuestasEntity.getJuegoPregunta().setIdJuegoPreguntas(estudianteJuegoRespuesta.getIdjuegoPreguntas());
+            estudianteJuegoRespuestasEntity.setIdpreguntas(estudianteJuegoRespuesta.getIdPreguntas());
+            estudianteJuegoRespuestasEntity.setIdReto(estudianteJuegoRespuesta.getIdReto());
 
             estudianteJuegoRespuestasCrud.save(estudianteJuegoRespuestasEntity);
 
@@ -85,20 +87,37 @@ public class EstudianteJuegoRespuestaRepositoryImpl implements EstudianteJuegoRe
     }
 
     @Override
-    public Boolean actualizar(int id, EstudianteJuegoRespuesta estudianteJuegoRespuesta) {
-        return null;
+    public boolean actualizar(int id, EstudianteJuegoRespuesta estudianteJuegoRespuesta) {
+
+        try {
+
+            EstudianteJuegoRespuestasEntity estudianteJuegoRespuestasEntity = new EstudianteJuegoRespuestasEntity();
+            estudianteJuegoRespuestasEntity.setIdEstudianteJuegoRespuestas(estudianteJuegoRespuesta.getIdEstudianteJuegoRespuestas());
+            estudianteJuegoRespuestasEntity.getJuegoPregunta().setIdJuegoPreguntas(estudianteJuegoRespuesta.getIdjuegoPreguntas());
+            estudianteJuegoRespuestasEntity.setIdpreguntas(estudianteJuegoRespuesta.getIdPreguntas());
+            estudianteJuegoRespuestasEntity.setIdReto(estudianteJuegoRespuesta.getIdReto());
+
+            estudianteJuegoRespuestasCrud.save(estudianteJuegoRespuestasEntity);
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
-    public Boolean delete(int idEstudianteJuegosRespuestas) {
-        if(estudianteJuegoRespuestasCrud.findByIdEstudianteJuegoRespuestas(idEstudianteJuegosRespuestas)!=null){
-            EstudianteJuegoRespuestasEntity estudianteJuegoRespuestasEntity = ( EstudianteJuegoRespuestasEntity) estudianteJuegoRespuestasCrud.findById(idEstudianteJuegoRespuestas);
+    public boolean delete(int idEstudianteJuegosRespuestas) {
+
+        if(estudianteJuegoRespuestasCrud.findFirstByIdEstudianteJuegoRespuestas(idEstudianteJuegosRespuestas)!=null){
+
+
+            EstudianteJuegoRespuestasEntity estudianteJuegoRespuestasEntity = estudianteJuegoRespuestasCrud.findFirstByIdEstudianteJuegoRespuestas(idEstudianteJuegosRespuestas);
+            estudianteJuegoRespuestasEntity.setEstado('N');
             estudianteJuegoRespuestasCrud.save(estudianteJuegoRespuestasEntity);
             return true;
         }else{
             return false;
         }
     }
-
-
 }

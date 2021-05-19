@@ -30,4 +30,5 @@ public class CursoContenidoEntity {
     private String video;
 
 
+
 }

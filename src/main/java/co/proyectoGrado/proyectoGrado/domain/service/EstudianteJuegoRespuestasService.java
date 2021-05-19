@@ -23,11 +23,11 @@ public class EstudianteJuegoRespuestasService {
     public boolean save(EstudianteJuegoRespuesta estudianteJuegoRespuestasService) {
         return estudianteJuegoRespuestasRepository.save(estudianteJuegoRespuestasService); }
 
-    public Boolean actualizar(int id, EstudianteJuegoRespuesta estudianteJuegoRespuesta) {
+    public boolean actualizar(int id, EstudianteJuegoRespuesta estudianteJuegoRespuesta) {
         return  estudianteJuegoRespuestasRepository.actualizar(id, estudianteJuegoRespuesta);
     }
 
-    public Boolean eliminar(int id) {
+    public boolean eliminar(int id) {
         return estudianteJuegoRespuestasRepository.delete(id);
     }
 }
