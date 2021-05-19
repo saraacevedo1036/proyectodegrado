@@ -2,7 +2,6 @@ package co.proyectoGrado.proyectoGrado.persistence;
 
 import co.proyectoGrado.proyectoGrado.domain.model.EstudianteJuegoRespuesta;
 import co.proyectoGrado.proyectoGrado.domain.repository.EstudianteJuegoRespuestasRepository;
-import co.proyectoGrado.proyectoGrado.domain.service.EstudianteJuegoRespuestasService;
 import co.proyectoGrado.proyectoGrado.persistence.crud.EstudianteJuegoRespuestasCrud;
 import co.proyectoGrado.proyectoGrado.persistence.entity.EstudianteJuegoRespuestasEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,13 +67,13 @@ public class EstudianteJuegoRespuestaRepositoryImpl implements EstudianteJuegoRe
 
 
     @Override
-    public boolean save(EstudianteJuegoRespuestasService estudianteJuegoRespuesta) {
+    public boolean save(EstudianteJuegoRespuesta estudianteJuegoRespuesta) {
         try {
             EstudianteJuegoRespuestasEntity estudianteJuegoRespuestasEntity = new EstudianteJuegoRespuestasEntity();
-            estudianteJuegoRespuestasEntity.setIdEstudianteJuegoRespuestas(estudianteJuegoRespuesta.getIdEstudianteJuegoRespuestas());
-            estudianteJuegoRespuestasEntity.getJuegoPregunta().setIdJuegoPreguntas(estudianteJuegoRespuesta.getIdjuegoPreguntas());
-            estudianteJuegoRespuesta.setIdPreguntas(estudianteJuegoRespuesta.getIdjuegoPreguntas());
-            estudianteJuegoRespuesta.setIdReto(estudianteJuegoRespuesta.getIdReto());
+            estudianteJuegoRespuestasEntity.setIdEstudianteJuegoRespuestas(estudianteJuegoRespuestasEntity.getIdEstudianteJuegoRespuestas());
+            estudianteJuegoRespuestasEntity.getJuegoPregunta().setIdJuegoPreguntas(estudianteJuegoRespuestasEntity.getIdpreguntas());
+            estudianteJuegoRespuestasEntity.getJuegoPregunta().setPregunta(estudianteJuegoRespuestasEntity.getjuegoPregunta());
+            estudianteJuegoRespuestasEntity.getJuegoPregunta().setReto(estudianteJuegoRespuestasEntity.getIdReto());
 
             estudianteJuegoRespuestasCrud.save(estudianteJuegoRespuestasEntity);
 
@@ -84,4 +83,22 @@ public class EstudianteJuegoRespuestaRepositoryImpl implements EstudianteJuegoRe
             return false;
         }
     }
+
+    @Override
+    public Boolean actualizar(int id, EstudianteJuegoRespuesta estudianteJuegoRespuesta) {
+        return null;
+    }
+
+    @Override
+    public Boolean delete(int idEstudianteJuegosRespuestas) {
+        if(estudianteJuegoRespuestasCrud.findByIdEstudianteJuegoRespuestas(idEstudianteJuegosRespuestas)!=null){
+            EstudianteJuegoRespuestasEntity estudianteJuegoRespuestasEntity = ( EstudianteJuegoRespuestasEntity) estudianteJuegoRespuestasCrud.findById(idEstudianteJuegoRespuestas);
+            estudianteJuegoRespuestasCrud.save(estudianteJuegoRespuestasEntity);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
 }

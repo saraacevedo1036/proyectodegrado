@@ -20,5 +20,14 @@ public class EstudianteJuegoRespuestasService {
         return estudianteJuegoRespuestasRepository.getByIdJuegoPregunta(idjuego_preguntas);
     }
 
-    public boolean save(EstudianteJuegoRespuestasService estudianteJuegoRespuestasService) { return estudianteJuegoRespuestasRepository.save(estudianteJuegoRespuestasService); }
+    public boolean save(EstudianteJuegoRespuesta estudianteJuegoRespuestasService) {
+        return estudianteJuegoRespuestasRepository.save(estudianteJuegoRespuestasService); }
+
+    public Boolean actualizar(int id, EstudianteJuegoRespuesta estudianteJuegoRespuesta) {
+        return  estudianteJuegoRespuestasRepository.actualizar(id, estudianteJuegoRespuesta);
+    }
+
+    public Boolean eliminar(int id) {
+        return estudianteJuegoRespuestasRepository.delete(id);
+    }
 }

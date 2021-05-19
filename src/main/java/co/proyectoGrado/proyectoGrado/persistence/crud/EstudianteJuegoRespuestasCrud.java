@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface EstudianteJuegoRespuestasCrud extends CrudRepository<EstudianteJuegoRespuestasEntity, Integer> {
 
-    EstudianteJuegoRespuestasEntity findFirstByIdJuegoPreguntas(int idjuegopreguntas);
-    EstudianteJuegoRespuestasEntity findFirstByIdPreguntas(int idpreguntas);
+    EstudianteJuegoRespuestasEntity findByIdEstudianteJuegoRespuestas(int idEstudianteJuegoRespuestas);
+    EstudianteJuegoRespuestasEntity findFirstByIdRespuestas(int idRespuestas);
 }

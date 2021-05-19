@@ -7,9 +7,11 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CursoContenidoCrud extends CrudRepository<CursoContenidoEntity, Integer> {
 
-    CursoContenidoEntity findFirstByIdCursoContenido(int idCursoContenido);
-    CursoContenidoEntity findFirstByCategoriaContenido(int idCategoriaContenido);
-    CursoContenidoEntity findFirstByCurso(int cursosIdCursos);
+
+
+    CursoContenidoEntity findByIdCursoContenido(int idCursoContenido);
+    CursoContenidoEntity findByCategoriaContenido(int idCategoriaContenido);
+    CursoContenidoEntity findByCurso(int cursosIdCursos);
 
 
 

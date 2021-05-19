@@ -7,17 +7,14 @@ import co.proyectoGrado.proyectoGrado.domain.service.EstudianteJuegoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 public class EstudianteJuegoRepuestasController {
 
     private final EstudianteJuegoRespuestasService estudianteJuegoRespuestasService;
 
     @Autowired
-    public EstudianteJuegoRespuestasController(EstudianteJuegoRespuestasService estudianteJuegoRespuestasService) {
+    public EstudianteJuegoRepuestasController(EstudianteJuegoRespuestasService estudianteJuegoRespuestasService) {
         this.estudianteJuegoRespuestasService = estudianteJuegoRespuestasService;
     }
 
@@ -30,4 +27,14 @@ public class EstudianteJuegoRepuestasController {
     public ResponseEntity<Boolean> save(@RequestBody EstudianteJuegoRespuesta estudianteJuegoRespuesta) {
         return new ResponseEntity<>(estudianteJuegoRespuestasService.save(estudianteJuegoRespuesta), HttpStatus.CREATED);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Boolean> actualizar(@PathVariable("id") int id, @RequestBody EstudianteJuegoRespuesta estudianteJuegoRespuesta){
+        return new ResponseEntity<>(estudianteJuegoRespuestasService.actualizar(id, estudianteJuegoRespuesta), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> eliminar(@PathVariable int id){
+        return new ResponseEntity<>(estudianteJuegoRespuestasService.eliminar(id), HttpStatus.OK);
+    }
+
 }

@@ -26,4 +26,5 @@ public class EstudianteJuegoRespuestasEntity {
     private EstudianteJuegoEntity estudianteJuego;
 
 
+
 }
