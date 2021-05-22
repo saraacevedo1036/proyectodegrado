@@ -7,10 +7,9 @@ import java.util.List;
 
 public interface JuegoPreguntasRepository {
 
-    List<Reto> getAll();
-    Reto get(int idPreguntas);
-    Reto getTitulo(int idRetos);
+    List<JuegoPregunta> getAll();
+    JuegoPregunta get(int idPreguntas);
     boolean save(JuegoPregunta juegoPregunta);
-    Boolean actualizar(int id, JuegoPregunta juegoPregunta);
-    Boolean delete(int id);
+    boolean actualizar(int id, JuegoPregunta juegoPregunta);
+    boolean delete(int id);
 }

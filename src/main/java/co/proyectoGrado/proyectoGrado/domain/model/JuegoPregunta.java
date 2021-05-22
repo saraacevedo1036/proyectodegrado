@@ -10,4 +10,5 @@ public class JuegoPregunta {
     private int idJuegoPreguntas;
     private int idPreguntas;
     private int idReto;
+    private boolean estado;
 }

@@ -76,7 +76,7 @@ public class EstudianteJuegoRespuestaRepositoryImpl implements EstudianteJuegoRe
             estudianteJuegoRespuestasEntity.getJuegoPregunta().setIdJuegoPreguntas(estudianteJuegoRespuesta.getIdjuegoPreguntas());
             estudianteJuegoRespuestasEntity.setIdpreguntas(estudianteJuegoRespuesta.getIdPreguntas());
             estudianteJuegoRespuestasEntity.setIdReto(estudianteJuegoRespuesta.getIdReto());
-
+            estudianteJuegoRespuestasEntity.setEstado(estudianteJuegoRespuesta.isEstado() ? 'S' : 'N');
             estudianteJuegoRespuestasCrud.save(estudianteJuegoRespuestasEntity);
 
             return true;
@@ -96,7 +96,7 @@ public class EstudianteJuegoRespuestaRepositoryImpl implements EstudianteJuegoRe
             estudianteJuegoRespuestasEntity.getJuegoPregunta().setIdJuegoPreguntas(estudianteJuegoRespuesta.getIdjuegoPreguntas());
             estudianteJuegoRespuestasEntity.setIdpreguntas(estudianteJuegoRespuesta.getIdPreguntas());
             estudianteJuegoRespuestasEntity.setIdReto(estudianteJuegoRespuesta.getIdReto());
-
+            estudianteJuegoRespuestasEntity.setEstado(estudianteJuegoRespuesta.isEstado() ? 'S' : 'N');
             estudianteJuegoRespuestasCrud.save(estudianteJuegoRespuestasEntity);
 
             return true;
