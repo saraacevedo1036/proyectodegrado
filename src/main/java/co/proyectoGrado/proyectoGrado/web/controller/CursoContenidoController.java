@@ -37,8 +37,8 @@ public class CursoContenidoController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> eliminar(@PathVariable int id){
-        return new ResponseEntity<>(cursoContenidoService.eliminar(id), HttpStatus.OK);
+    public ResponseEntity<Object> eliminar(@PathVariable int id){
+        return cursoContenidoService.eliminar(id);
     }
 
 }

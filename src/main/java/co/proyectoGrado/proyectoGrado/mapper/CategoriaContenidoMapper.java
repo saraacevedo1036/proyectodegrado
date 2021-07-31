@@ -1,4 +1,4 @@
-package co.proyectoGrado.proyectoGrado.mapper;
+/* package co.proyectoGrado.proyectoGrado.mapper;
 
 import co.proyectoGrado.proyectoGrado.domain.model.CategoriaContenido;
 import co.proyectoGrado.proyectoGrado.persistence.entity.CategoriaContenidoEntity;
@@ -19,3 +19,4 @@ public interface CategoriaContenidoMapper {
     @InheritInverseConfiguration
     CategoriaContenidoEntity toCategoriaContenidoEntity(CategoriaContenido categoriaContenido);
 }
+*/

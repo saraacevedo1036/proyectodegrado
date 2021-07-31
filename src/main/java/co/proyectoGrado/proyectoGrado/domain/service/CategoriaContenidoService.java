@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CategoriaContenidoService {
     private final CategoriaContenidoRepository categoriaContenidoRepository;
+    
 
     @Autowired
     public CategoriaContenidoService(CategoriaContenidoRepository categoriaContenidoRepository) {

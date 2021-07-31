@@ -1,4 +1,4 @@
-package co.proyectoGrado.proyectoGrado.mapper;
+/*package co.proyectoGrado.proyectoGrado.mapper;
 
 import co.proyectoGrado.proyectoGrado.domain.model.JuegoPregunta;
 import co.proyectoGrado.proyectoGrado.persistence.entity.JuegoPreguntasEntity;
@@ -19,3 +19,4 @@ public interface JuegoPreguntaMapper {
     @InheritInverseConfiguration
     JuegoPreguntasEntity toJuegoPreguntasEntity(JuegoPregunta juegoPregunta);
 }
+*/

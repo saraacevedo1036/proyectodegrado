@@ -1,4 +1,4 @@
-package co.proyectoGrado.proyectoGrado.mapper;
+/*package co.proyectoGrado.proyectoGrado.mapper;
 
 import co.proyectoGrado.proyectoGrado.domain.model.Docente;
 import co.proyectoGrado.proyectoGrado.domain.model.EstudianteJuego;
@@ -23,3 +23,4 @@ public interface EstudianteJuegoMapper {
     @InheritInverseConfiguration
     EstudianteJuegoEntity toEstudianteJuegoEntity(EstudianteJuego estudianteJuego );
 }
+*/
