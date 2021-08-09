@@ -5,6 +5,8 @@ import co.proyectoGrado.proyectoGrado.domain.repository.DocenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DocenteService {
     private final DocenteRepository docenteRepository;
@@ -14,6 +16,9 @@ public class DocenteService {
         this.docenteRepository = docenteRepository;
     }
 
+    public List<Docente> getAll(){
+        return docenteRepository.getAll();
+    }
     public Docente get(String email) {
         return docenteRepository.get(email);
     }

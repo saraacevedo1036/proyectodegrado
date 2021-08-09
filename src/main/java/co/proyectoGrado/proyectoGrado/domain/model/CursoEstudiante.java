@@ -7,6 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class CursoEstudiante {
 
+    private int idCursoEstudainte;
     private int idEstudiantes;
     private int idCursos;
     // No se encuentra en Entity,

@@ -34,8 +34,6 @@ public class RetoController {
         return new ResponseEntity<>(retoService.actualizar(id, reto), HttpStatus.OK);
     }
 
-
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> eliminar(@PathVariable int id){
         return new ResponseEntity<>(retoService.eliminar(id), HttpStatus.OK);
