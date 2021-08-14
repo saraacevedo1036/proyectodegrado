@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 public class JuegoPreguntasController {
     private final JuegoPreguntasService juegoPreguntasService;
 
@@ -15,9 +17,13 @@ public class JuegoPreguntasController {
     public JuegoPreguntasController(JuegoPreguntasService juegoPreguntasService) {
         this.juegoPreguntasService = juegoPreguntasService;
     }
+    @GetMapping()
+    public ResponseEntity<List<JuegoPregunta>> getAll(){
+        return new ResponseEntity<>(juegoPreguntasService.getAll(),HttpStatus.OK);
+    }
 
     @GetMapping("/idestudianteJuego/{idestudianteJuego}")
-    public ResponseEntity<JuegoPregunta> getByEmail(@PathVariable("idJuegoPregunta") int idJuegoPregunta) {
+    public ResponseEntity<JuegoPregunta> getById(@PathVariable("idJuegoPregunta") int idJuegoPregunta) {
         return new ResponseEntity<>(juegoPreguntasService.get(idJuegoPregunta), HttpStatus.OK);
     }
 

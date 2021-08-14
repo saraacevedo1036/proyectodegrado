@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 public class PreguntaController {
     private final PreguntaService preguntaService;
 
@@ -17,8 +19,12 @@ public class PreguntaController {
         this.preguntaService = preguntaService;
     }
 
+    @GetMapping()
+    public ResponseEntity<List<Pregunta>> getAll(){
+        return new ResponseEntity<>(preguntaService.getAll(),HttpStatus.OK);}
+
     @GetMapping("/idPreguntas/{idPreguntas}")
-    public ResponseEntity<Pregunta> getByEmail(@PathVariable("idPreguntas") int idPreguntas) {
+    public ResponseEntity<Pregunta> getById(@PathVariable("idPreguntas") int idPreguntas) {
         return new ResponseEntity<>(preguntaService.get(idPreguntas), HttpStatus.OK);
     }
 

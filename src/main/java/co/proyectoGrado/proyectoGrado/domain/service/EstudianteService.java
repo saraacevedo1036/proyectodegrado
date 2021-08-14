@@ -20,6 +20,8 @@ public class EstudianteService {
         return estudianteRepository.get(email);
     }
 
+    public List<Estudiante> getAll(){return estudianteRepository.getAll();}
+
     public boolean save(Estudiante estudiante) {
         return estudianteRepository.save(estudiante);
     }

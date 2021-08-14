@@ -18,7 +18,7 @@ public class CursoDocenteController {
     }
 
     @GetMapping("/iddocentes/{iddocentes}")
-    public ResponseEntity<CursoDocente> getByEmail(@PathVariable("iddocentes")int iddocentes) {
+    public ResponseEntity<CursoDocente> getById(@PathVariable("iddocentes")int iddocentes) {
         return new ResponseEntity<>(cursodocenteService.get(iddocentes), HttpStatus.OK);
     }
 

@@ -4,6 +4,8 @@ import co.proyectoGrado.proyectoGrado.domain.model.EstudianteJuego;
 import co.proyectoGrado.proyectoGrado.domain.repository.EstudianteJuegoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 public class EstudianteJuegoService {
     private final EstudianteJuegoRepository estudianteJuegoRepository;
 
@@ -11,6 +13,8 @@ public class EstudianteJuegoService {
     public EstudianteJuegoService(EstudianteJuegoRepository estudianteJuegoRepository) {
         this.estudianteJuegoRepository = estudianteJuegoRepository;
     }
+
+    public List<EstudianteJuego> getAll(){ return estudianteJuegoRepository.getAll();}
 
     public EstudianteJuego get(int idReto) {
         return estudianteJuegoRepository.getByIdReto(idReto);

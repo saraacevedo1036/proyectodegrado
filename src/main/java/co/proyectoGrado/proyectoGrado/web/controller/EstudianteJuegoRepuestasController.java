@@ -19,7 +19,7 @@ public class EstudianteJuegoRepuestasController {
     }
 
     @GetMapping("/idestudianteJuego/{idestudianteJuego}")
-    public ResponseEntity<EstudianteJuegoRespuesta> getByEmail(@PathVariable("idestudianteJuego") int idestudianteJuego) {
+    public ResponseEntity<EstudianteJuegoRespuesta> getById(@PathVariable("idestudianteJuego") int idestudianteJuego) {
         return new ResponseEntity<>(estudianteJuegoRespuestasService.get(idestudianteJuego), HttpStatus.OK);
     }
 

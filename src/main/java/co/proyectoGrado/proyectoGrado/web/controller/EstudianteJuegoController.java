@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 public class EstudianteJuegoController {
     private final EstudianteJuegoService estudianteJuegoService;
 
@@ -17,8 +19,13 @@ public class EstudianteJuegoController {
         this.estudianteJuegoService = estudianteJuegoService;
     }
 
+    @GetMapping()
+    public ResponseEntity<List<EstudianteJuego>> getAll(){
+        return new ResponseEntity<>(estudianteJuegoService.getAll(),HttpStatus.OK);
+    }
+
     @GetMapping("/idestudianteJuego/{idestudianteJuego}")
-    public ResponseEntity<EstudianteJuego> getByEmail(@PathVariable("idestudianteJuego") int idestudianteJuego) {
+    public ResponseEntity<EstudianteJuego> getById(@PathVariable("idestudianteJuego") int idestudianteJuego) {
         return new ResponseEntity<>(estudianteJuegoService.get(idestudianteJuego), HttpStatus.OK);
     }
 

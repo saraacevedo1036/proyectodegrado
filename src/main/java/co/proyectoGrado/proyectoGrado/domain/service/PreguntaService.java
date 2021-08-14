@@ -7,6 +7,8 @@ import co.proyectoGrado.proyectoGrado.domain.repository.PreguntaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PreguntaService {
     private final PreguntaRepository preguntaRepository;
@@ -15,6 +17,7 @@ public class PreguntaService {
     public PreguntaService(PreguntaRepository preguntaRepository) {
         this.preguntaRepository = preguntaRepository; }
 
+    public List<Pregunta> getAll(){return preguntaRepository.getAll();}
     public Pregunta get(int idPreguntas) {
         return preguntaRepository.get(idPreguntas);
     }

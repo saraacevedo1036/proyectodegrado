@@ -5,6 +5,7 @@ import co.proyectoGrado.proyectoGrado.domain.repository.RetoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.swing.text.StyledEditorKit;
+import java.util.List;
 
 public class RetoService {
     private final RetoRepository retoRepository;
@@ -14,6 +15,9 @@ public class RetoService {
         this.retoRepository = retoRepository;
     }
 
+    public List<Reto> getAll(){
+        return retoRepository.getAll();
+    }
     public Reto get(String titulo) {
         return retoRepository.get(titulo);
     }

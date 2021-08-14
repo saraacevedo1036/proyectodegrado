@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/students")
 public class EstudianteController {
@@ -19,6 +21,10 @@ public class EstudianteController {
         this.estudianteService = estudianteService;
     }
 
+    @GetMapping()
+    public ResponseEntity<List<Estudiante>> getAll(){
+        return new ResponseEntity<>(estudianteService.getAll(),HttpStatus.OK);
+    }
     @GetMapping("/email/{email}")
     public ResponseEntity<Estudiante> getByEmail(@PathVariable("email") String email) {
         return new ResponseEntity<>(estudianteService.get(email), HttpStatus.OK);

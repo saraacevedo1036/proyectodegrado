@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/coursecontroller")
 public class CursoController {
@@ -20,8 +22,13 @@ public class CursoController {
         this.cursoService = cursoService;
     }
 
+    @GetMapping()
+    public ResponseEntity<List<Curso>> getAll(){
+        return new ResponseEntity<>(cursoService.getAll(),HttpStatus.OK);
+    }
+
     @GetMapping("/grado/{grado}")
-    public ResponseEntity<Curso> getByEmail(@PathVariable("grado") String grado) {
+    public ResponseEntity<Curso> getByGrado(@PathVariable("grado") String grado) {
         return new ResponseEntity<>(cursoService.get(grado), HttpStatus.OK);
     }
 

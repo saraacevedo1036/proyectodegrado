@@ -21,7 +21,7 @@ public class CategoriaContenidoController {
     }
 
     @GetMapping("/idCategoria/{idCategoria}")
-    public ResponseEntity<CategoriaContenido> getByEmail(@PathVariable("idCategoria") String idCategoria) {
+    public ResponseEntity<CategoriaContenido> getById(@PathVariable("idCategoria") String idCategoria) {
         return new ResponseEntity<>(categoriaContenidoService.get(Integer.parseInt(idCategoria)), HttpStatus.OK);
     }
 
