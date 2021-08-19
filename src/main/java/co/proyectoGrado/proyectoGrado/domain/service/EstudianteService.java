@@ -4,13 +4,22 @@ import co.proyectoGrado.proyectoGrado.domain.model.Docente;
 import co.proyectoGrado.proyectoGrado.domain.model.Estudiante;
 import co.proyectoGrado.proyectoGrado.domain.repository.DocenteRepository;
 import co.proyectoGrado.proyectoGrado.domain.repository.EstudianteRepository;
+import co.proyectoGrado.proyectoGrado.persistence.crud.EstudianteCrud;
+import co.proyectoGrado.proyectoGrado.persistence.crud.EstudianteJuegoRespuestasCrud;
+import co.proyectoGrado.proyectoGrado.persistence.entity.EstudianteEntity;
+import co.proyectoGrado.proyectoGrado.persistence.entity.EstudianteJuegoRespuestasEntity;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EstudianteService {
 
     private final EstudianteRepository estudianteRepository;
+    @Autowired
+    private EstudianteCrud estudianteCrud;
 
     @Autowired
 
@@ -19,11 +28,19 @@ public class EstudianteService {
     public Estudiante get(String email) {
         return estudianteRepository.get(email);
     }
+    private final ModelMapper mapper = new ModelMapper();
 
     public List<Estudiante> getAll(){return estudianteRepository.getAll();}
 
     public boolean save(Estudiante estudiante) {
-        return estudianteRepository.save(estudiante);
+        EstudianteEntity contenido = mapper.map(estudiante, EstudianteEntity.class);
+        try {
+            estudianteCrud.save(contenido);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Boolean.FALSE;
+        }
     }
 
 

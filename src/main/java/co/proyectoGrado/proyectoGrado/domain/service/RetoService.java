@@ -2,6 +2,11 @@ package co.proyectoGrado.proyectoGrado.domain.service;
 
 import co.proyectoGrado.proyectoGrado.domain.model.Reto;
 import co.proyectoGrado.proyectoGrado.domain.repository.RetoRepository;
+import co.proyectoGrado.proyectoGrado.persistence.crud.JuegoPreguntasCrud;
+import co.proyectoGrado.proyectoGrado.persistence.crud.RetoCrud;
+import co.proyectoGrado.proyectoGrado.persistence.entity.JuegoPreguntasEntity;
+import co.proyectoGrado.proyectoGrado.persistence.entity.RetoEntity;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.swing.text.StyledEditorKit;
@@ -9,11 +14,14 @@ import java.util.List;
 
 public class RetoService {
     private final RetoRepository retoRepository;
+    @Autowired
+    private RetoCrud retoCrud;
 
     @Autowired
     public RetoService(RetoRepository retoRepository) {
         this.retoRepository = retoRepository;
     }
+    private final ModelMapper mapper = new ModelMapper();
 
     public List<Reto> getAll(){
         return retoRepository.getAll();
@@ -22,7 +30,16 @@ public class RetoService {
         return retoRepository.get(titulo);
     }
 
-    public boolean save(Reto reto) { return retoRepository.save(reto); }
+    public boolean save(Reto reto) {
+        RetoEntity contenido = mapper.map(reto, RetoEntity.class);
+        try {
+            retoCrud.save(contenido);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Boolean.FALSE;
+        }
+    }
 
     public Boolean actualizar(int id, Reto reto) {
         return  retoRepository.actualizar(id, reto);

@@ -4,6 +4,11 @@ import co.proyectoGrado.proyectoGrado.domain.model.Estudiante;
 import co.proyectoGrado.proyectoGrado.domain.model.Pregunta;
 import co.proyectoGrado.proyectoGrado.domain.repository.EstudianteRepository;
 import co.proyectoGrado.proyectoGrado.domain.repository.PreguntaRepository;
+import co.proyectoGrado.proyectoGrado.persistence.crud.JuegoPreguntasCrud;
+import co.proyectoGrado.proyectoGrado.persistence.crud.PreguntaCrud;
+import co.proyectoGrado.proyectoGrado.persistence.entity.JuegoPreguntasEntity;
+import co.proyectoGrado.proyectoGrado.persistence.entity.PreguntaEntity;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +17,13 @@ import java.util.List;
 @Service
 public class PreguntaService {
     private final PreguntaRepository preguntaRepository;
+    @Autowired
+    private PreguntaCrud preguntasCrud;
 
     @Autowired
     public PreguntaService(PreguntaRepository preguntaRepository) {
         this.preguntaRepository = preguntaRepository; }
+    private final ModelMapper mapper = new ModelMapper();
 
     public List<Pregunta> getAll(){return preguntaRepository.getAll();}
     public Pregunta get(int idPreguntas) {
@@ -23,7 +31,14 @@ public class PreguntaService {
     }
 
     public boolean save(Pregunta pregunta) {
-        return preguntaRepository.save(pregunta);
+        PreguntaEntity contenido = mapper.map(pregunta, PreguntaEntity.class);
+        try {
+            preguntasCrud.save(contenido);
+            return Boolean.TRUE;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Boolean.FALSE;
+        }
     }
 
     public Boolean actualizar(int id, Pregunta pregunta) {
