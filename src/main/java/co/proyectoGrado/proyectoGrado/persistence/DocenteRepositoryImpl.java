@@ -2,6 +2,7 @@ package co.proyectoGrado.proyectoGrado.persistence;
 
 import co.proyectoGrado.proyectoGrado.domain.model.Docente;
 import co.proyectoGrado.proyectoGrado.domain.repository.DocenteRepository;
+import co.proyectoGrado.proyectoGrado.excepciones.excepcion.ExcepcionValorInvalido;
 import co.proyectoGrado.proyectoGrado.persistence.crud.DocenteCrud;
 import co.proyectoGrado.proyectoGrado.persistence.entity.DocenteEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import java.util.List;
 @Repository
 public class DocenteRepositoryImpl implements DocenteRepository {
     private final DocenteCrud docenteCrud;
+    private static final String EL_DOCENTE_NO_EXISTE_EN_EL_SISTEMA = "El docente con ese id no existe en el sistema";
 
     @Autowired
     public DocenteRepositoryImpl(DocenteCrud docenteCrud) {
@@ -42,14 +44,13 @@ public class DocenteRepositoryImpl implements DocenteRepository {
     public Docente get(int identificacion) {
         DocenteEntity docenteEntity = docenteCrud.findFirstByIdentificacion(identificacion);
 
-        if (docenteEntity != null && docenteEntity.getEstado()=='S') {
-            return new Docente(docenteEntity.getIdDocentes(), docenteEntity.getNombre(),
-                    docenteEntity.getApellido(), docenteEntity.getIdentificacion(),
-                    docenteEntity.getCorreo(), docenteEntity.getContrasena(),
-                    "S".equals(docenteEntity.getEstado()));
-        } else {
-            return null;
+        if (!(docenteEntity != null && docenteEntity.getEstado()=='S')) {
+            throw new ExcepcionValorInvalido(EL_DOCENTE_NO_EXISTE_EN_EL_SISTEMA);
         }
+        return new Docente(docenteEntity.getIdDocentes(), docenteEntity.getNombre(),
+                docenteEntity.getApellido(), docenteEntity.getIdentificacion(),
+                docenteEntity.getCorreo(), docenteEntity.getContrasena(),
+                "S".equals(docenteEntity.getEstado()));
     }
 
     @Override

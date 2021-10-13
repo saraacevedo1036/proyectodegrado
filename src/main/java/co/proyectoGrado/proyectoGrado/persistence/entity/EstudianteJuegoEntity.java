@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class EstudianteJuegoEntity {
 
     @Id
-    @Column(name = "idEstudiantes_juego")
+    @Column(name = "idestudiantes_juego")
     private int idEstudianteJuego;
     @Column(name = "calificacion")
     private double calificacion;

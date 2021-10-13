@@ -25,7 +25,7 @@ public class CursoEstudiantesRepositoryImpl implements CursosEstudiantesReposito
         List<CursoEstudiante> cursoEstudiantes = new ArrayList<>();
 
         cursoEstudianteCrud.findAll().forEach(cursosEstudiantesEntity -> {
-            CursoEstudiante cursoEstudiante = new CursoEstudiante(cursosEstudiantesEntity.getEstudiante().getIdEstudiantes(),cursosEstudiantesEntity.getCurso().getIdCursos());
+            CursoEstudiante cursoEstudiante = new CursoEstudiante(cursosEstudiantesEntity.getIdCursoEstudiante(),cursosEstudiantesEntity.getEstudiante().getIdEstudiantes(),cursosEstudiantesEntity.getCurso().getIdCursos());
 
             cursoEstudiantes.add(cursoEstudiante);
         });
@@ -38,7 +38,7 @@ public class CursoEstudiantesRepositoryImpl implements CursosEstudiantesReposito
         CursosEstudiantesEntity cursosEstudiantesEntity = cursoEstudianteCrud.findFirstByIdEstudiante(idEstudiante);
 
         if (cursosEstudiantesEntity != null) {
-            return new CursoEstudiante(cursosEstudiantesEntity.getEstudiante().getIdEstudiantes(),cursosEstudiantesEntity.getCurso().getIdCursos());
+            return new CursoEstudiante(cursosEstudiantesEntity.getIdCursoEstudiante(),cursosEstudiantesEntity.getEstudiante().getIdEstudiantes(),cursosEstudiantesEntity.getCurso().getIdCursos());
         } else {
             return null;
         }
@@ -48,7 +48,7 @@ public class CursoEstudiantesRepositoryImpl implements CursosEstudiantesReposito
         CursosEstudiantesEntity cursosEstudiantesEntity = cursoEstudianteCrud.findFirstByIdEstudiante(idCursos);
 
         if (cursosEstudiantesEntity != null) {
-            return new CursoEstudiante(cursosEstudiantesEntity.getEstudiante().getIdEstudiantes(),cursosEstudiantesEntity.getCurso().getIdCursos());
+            return new CursoEstudiante(cursosEstudiantesEntity.getIdCursoEstudiante(),cursosEstudiantesEntity.getEstudiante().getIdEstudiantes(),cursosEstudiantesEntity.getCurso().getIdCursos());
         } else {
             return null;
         }

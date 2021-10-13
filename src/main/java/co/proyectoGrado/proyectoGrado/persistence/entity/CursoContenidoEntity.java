@@ -26,6 +26,6 @@ public class CursoContenidoEntity {
     private String descripcion;
     @Column(name = "imagen")
     private String imagen;
-    @Column(name = "video")
+    @Column(name = "urlvideo")
     private String video;
 }
