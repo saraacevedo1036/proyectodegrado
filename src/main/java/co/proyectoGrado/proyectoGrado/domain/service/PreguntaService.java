@@ -16,6 +16,7 @@ import java.util.List;
 
 @Service
 public class PreguntaService {
+
     private final PreguntaRepository preguntaRepository;
     @Autowired
     private PreguntaCrud preguntasCrud;

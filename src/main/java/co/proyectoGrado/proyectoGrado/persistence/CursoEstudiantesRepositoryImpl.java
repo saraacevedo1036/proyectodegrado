@@ -35,7 +35,7 @@ public class CursoEstudiantesRepositoryImpl implements CursosEstudiantesReposito
 
     @Override
     public CursoEstudiante getIdEstudiantes(int idEstudiante) {
-        CursosEstudiantesEntity cursosEstudiantesEntity = cursoEstudianteCrud.findFirstByIdEstudiante(idEstudiante);
+        CursosEstudiantesEntity cursosEstudiantesEntity = cursoEstudianteCrud.findFirstByEstudiante_IdEstudiantes(idEstudiante);
 
         if (cursosEstudiantesEntity != null) {
             return new CursoEstudiante(cursosEstudiantesEntity.getIdCursoEstudiante(),cursosEstudiantesEntity.getEstudiante().getIdEstudiantes(),cursosEstudiantesEntity.getCurso().getIdCursos());
@@ -45,7 +45,7 @@ public class CursoEstudiantesRepositoryImpl implements CursosEstudiantesReposito
     }
     @Override
     public CursoEstudiante getIdCursos(int idCursos) {
-        CursosEstudiantesEntity cursosEstudiantesEntity = cursoEstudianteCrud.findFirstByIdEstudiante(idCursos);
+        CursosEstudiantesEntity cursosEstudiantesEntity = cursoEstudianteCrud.findFirstByCurso_IdCursos(idCursos);
 
         if (cursosEstudiantesEntity != null) {
             return new CursoEstudiante(cursosEstudiantesEntity.getIdCursoEstudiante(),cursosEstudiantesEntity.getEstudiante().getIdEstudiantes(),cursosEstudiantesEntity.getCurso().getIdCursos());
@@ -91,8 +91,8 @@ public class CursoEstudiantesRepositoryImpl implements CursosEstudiantesReposito
 
     @Override
     public Boolean delete(int idCursoEstudiantes) {
-        if(cursoEstudianteCrud.findByIdCursoEstudiantes(idCursoEstudiantes)!=null){
-            CursosEstudiantesEntity cursosEstudianteEntity = (CursosEstudiantesEntity) cursoEstudianteCrud.findByIdCursoEstudiantes(idCursoEstudiantes);
+        if(cursoEstudianteCrud.findByIdCursoEstudiante(idCursoEstudiantes)!=null){
+            CursosEstudiantesEntity cursosEstudianteEntity =  cursoEstudianteCrud.findByIdCursoEstudiante(idCursoEstudiantes);
             cursoEstudianteCrud.save(cursosEstudianteEntity);
             return true;
         }else{

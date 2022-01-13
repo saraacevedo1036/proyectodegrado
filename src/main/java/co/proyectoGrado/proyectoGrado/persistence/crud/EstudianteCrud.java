@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface EstudianteCrud extends CrudRepository<EstudianteEntity, Integer> {
-    List<Estudiante> findByIdEstudiante(int idEstudiante);
+    List<EstudianteEntity> findByIdEstudiantes(int idEstudiante);
     EstudianteEntity findFirstByIdentificacion(int identificacion);
     EstudianteEntity findFirstByCorreo(String correo);
 

@@ -5,10 +5,11 @@ import co.proyectoGrado.proyectoGrado.domain.repository.PreguntaRepository;
 import co.proyectoGrado.proyectoGrado.persistence.crud.PreguntaCrud;
 import co.proyectoGrado.proyectoGrado.persistence.entity.PreguntaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class PreguntaRepositoryImpl implements PreguntaRepository {
 
     private final PreguntaCrud preguntaCrud;

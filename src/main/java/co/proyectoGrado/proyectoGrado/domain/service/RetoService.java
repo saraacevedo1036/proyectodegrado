@@ -8,10 +8,11 @@ import co.proyectoGrado.proyectoGrado.persistence.entity.JuegoPreguntasEntity;
 import co.proyectoGrado.proyectoGrado.persistence.entity.RetoEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.swing.text.StyledEditorKit;
 import java.util.List;
-
+@Service
 public class RetoService {
     private final RetoRepository retoRepository;
     @Autowired

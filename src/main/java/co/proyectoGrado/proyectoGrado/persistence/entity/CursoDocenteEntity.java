@@ -15,10 +15,10 @@ public class CursoDocenteEntity {
     @Column(name="idcurso_docente")
     private int idCursoDocente;
     @ManyToOne
-    @JoinColumn(name="idDocente", insertable = false, updatable = false)
+    @JoinColumn(name="iddocente", insertable = false, updatable = false)
     private DocenteEntity docente;
     @ManyToOne
-    @JoinColumn(name="idCursos", insertable = false, updatable = false)
+    @JoinColumn(name="idcursos", insertable = false, updatable = false)
     private CursoEntity curso;
     @Column(name = "estado")
     private char estado;

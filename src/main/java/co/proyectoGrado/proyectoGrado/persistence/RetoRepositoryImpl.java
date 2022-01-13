@@ -6,10 +6,11 @@ import co.proyectoGrado.proyectoGrado.persistence.crud.RetoCrud;
 import co.proyectoGrado.proyectoGrado.persistence.entity.DocenteEntity;
 import co.proyectoGrado.proyectoGrado.persistence.entity.RetoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class RetoRepositoryImpl implements RetoRepository {
     private final RetoCrud retoCrud;
 

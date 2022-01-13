@@ -10,9 +10,7 @@ public interface CategoriaContenidoCrud extends CrudRepository<CategoriaContenid
 
 // revisar
 
-    static CategoriaContenidoEntity findByIdCategoriaContenido(int idCategoriaContenido) {
-        return null;
-    }
+     CategoriaContenidoEntity findByIdCategoriaContenido(int idCategoriaContenido);
 
 
     CategoriaContenidoEntity findByPregunta_IdPregunta(int cursosIdCursos);

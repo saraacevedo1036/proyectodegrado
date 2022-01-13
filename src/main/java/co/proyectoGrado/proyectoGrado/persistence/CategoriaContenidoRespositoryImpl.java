@@ -40,7 +40,7 @@ public class CategoriaContenidoRespositoryImpl implements CategoriaContenidoRepo
     @Override
     public CategoriaContenido get(int idCategoriaContenido) {
 
-        CategoriaContenidoEntity categoriaContenidoEntity = CategoriaContenidoCrud.findByIdCategoriaContenido(idCategoriaContenido);
+        CategoriaContenidoEntity categoriaContenidoEntity = categoriaContenidoCrud.findByIdCategoriaContenido(idCategoriaContenido);
 
         if (categoriaContenidoEntity != null) {
             return new CategoriaContenido(categoriaContenidoEntity.getIdCategoriaContenido(),
@@ -84,7 +84,7 @@ public class CategoriaContenidoRespositoryImpl implements CategoriaContenidoRepo
             CategoriaContenidoEntity categoriaContenidoEntity = new CategoriaContenidoEntity();
             categoriaContenidoEntity.setIdCategoriaContenido(categoriaContenido.getIdCategoriaContenido());
             categoriaContenidoEntity.getPregunta().setIdPregunta(categoriaContenido.getIdPregunta());
-            //  categoriaContenidoEntity.setPregunta(preguntasCrud.findById(categoriaContenido.getIdPregunta()));
+            //categoriaContenidoEntity.setPregunta(preguntasCrud.findById(categoriaContenido.getIdPregunta()));
             categoriaContenidoCrud.save(categoriaContenidoEntity);
             return true;
         } catch (Exception e) {
@@ -95,8 +95,8 @@ public class CategoriaContenidoRespositoryImpl implements CategoriaContenidoRepo
 
     @Override
     public Boolean delete(int idCategoriaContenido) {
-        if(CategoriaContenidoCrud.findByIdCategoriaContenido(idCategoriaContenido)!=null){
-            CategoriaContenidoEntity categoriaContenidoEntity = (CategoriaContenidoEntity) CategoriaContenidoCrud.findByIdCategoriaContenido(idCategoriaContenido);
+        if(categoriaContenidoCrud.findByIdCategoriaContenido(idCategoriaContenido)!=null){
+            CategoriaContenidoEntity categoriaContenidoEntity =  categoriaContenidoCrud.findByIdCategoriaContenido(idCategoriaContenido);
              categoriaContenidoCrud.save(categoriaContenidoEntity);
             return true;
         }else{

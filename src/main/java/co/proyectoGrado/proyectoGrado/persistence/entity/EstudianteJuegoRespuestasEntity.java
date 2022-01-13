@@ -15,9 +15,9 @@ public class EstudianteJuegoRespuestasEntity {
     @Column(name= "idestudiante_juego_respuestas")
     private int idEstudianteJuegoRespuestas;
     @OneToOne
-    @JoinColumn(name="idJuego_preguntas", insertable = false, updatable = false)
+    @JoinColumn(name="idjuego_preguntas", insertable = false, updatable = false)
     private JuegoPreguntasEntity juegoPregunta;
-    @Column(name= "idPreguntas")
+    @Column(name= "idpreguntas")
     private int idpreguntas;
     @Column(name= "idreto")
     private int idReto;

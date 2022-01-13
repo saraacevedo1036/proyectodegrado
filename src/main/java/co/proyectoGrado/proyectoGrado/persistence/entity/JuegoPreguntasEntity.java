@@ -12,13 +12,13 @@ import javax.persistence.*;
 public class JuegoPreguntasEntity {
 
     @Id
-    @Column(name="idJuego_preguntas")
+    @Column(name="idjuego_preguntas")
     private int idJuegoPreguntas;
     @ManyToOne
-    @JoinColumn(name="idPreguntas", insertable = false, updatable = false)
+    @JoinColumn(name="idpreguntas", insertable = false, updatable = false)
     private PreguntaEntity pregunta;
     @OneToOne
-    @JoinColumn(name="idReto", insertable = false, updatable = false)
+    @JoinColumn(name="idreto", insertable = false, updatable = false)
     private RetoEntity reto;
     @Column(name="estado")
     private char estado;

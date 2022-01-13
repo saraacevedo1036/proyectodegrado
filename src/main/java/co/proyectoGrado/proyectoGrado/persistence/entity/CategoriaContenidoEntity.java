@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class CategoriaContenidoEntity {
 
     @Id
-    @Column(name="idCategoria_contenido")
+    @Column(name="idcategoria_contenido")
     private int idCategoriaContenido;
     @OneToOne
     @JoinColumn(name="idPreguntas", insertable = false, updatable = false)

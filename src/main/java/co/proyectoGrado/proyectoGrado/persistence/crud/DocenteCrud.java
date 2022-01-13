@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface DocenteCrud extends CrudRepository<DocenteEntity, Integer> {
 
-    List<Docente> findByIdDocente(int idDocente);
+    List<DocenteEntity> findByIdDocentes(int idDocente);
     DocenteEntity findFirstByIdentificacion(int identificacion);
     DocenteEntity findFirstByCorreo(String correo);
 }

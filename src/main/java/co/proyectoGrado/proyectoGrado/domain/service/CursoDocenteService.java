@@ -42,7 +42,7 @@ public class CursoDocenteService {
     }
 
     public Boolean actualizar(int id, CursoDocente cursodocente) {
-        CursoDocenteEntity contenido =  CursoDocenteCrud.findByIdCursoDocente(id);
+        CursoDocenteEntity contenido =  cursoDocenteCrud.findByIdCursoDocente(id);
         if ("".equals(contenido.getIdCursoDocente())) {
             CursoDocenteEntity contenidoMapper = mapper.map(cursodocente, CursoDocenteEntity.class);
             contenidoMapper.setIdCursoDocente(contenido.getIdCursoDocente());

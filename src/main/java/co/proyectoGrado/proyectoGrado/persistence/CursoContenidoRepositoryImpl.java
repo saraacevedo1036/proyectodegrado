@@ -5,10 +5,11 @@ import co.proyectoGrado.proyectoGrado.domain.repository.CursoContenidoRepository
 import co.proyectoGrado.proyectoGrado.persistence.crud.CursoContenidoCrud;
 import co.proyectoGrado.proyectoGrado.persistence.entity.CursoContenidoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class CursoContenidoRepositoryImpl implements CursoContenidoRepository {
 
     private final CursoContenidoCrud cursoContenidoCrud;

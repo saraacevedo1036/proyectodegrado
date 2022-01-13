@@ -72,7 +72,7 @@ public class DocenteRepositoryImpl implements DocenteRepository {
         try{
             DocenteEntity docenteEntity = new DocenteEntity();
 
-            docenteEntity.setIdDocentes(docente.getDocenteId());
+            docenteEntity.setIdDocentes(docente.getIdDocente());
             docenteEntity.setNombre(docente.getNombre());
             docenteEntity.setApellido(docente.getApellido());
             docenteEntity.setIdentificacion(docente.getIdentificacion());
@@ -97,7 +97,7 @@ public class DocenteRepositoryImpl implements DocenteRepository {
 
                 DocenteEntity docenteEntity = new DocenteEntity();
 
-                docenteEntity.setIdDocentes(docente.getDocenteId());
+                docenteEntity.setIdDocentes(docente.getIdDocente());
                 docenteEntity.setNombre(docente.getNombre());
                 docenteEntity.setApellido(docente.getApellido());
                 docenteEntity.setIdentificacion(docente.getIdentificacion());
@@ -119,8 +119,8 @@ public class DocenteRepositoryImpl implements DocenteRepository {
 
     @Override
     public boolean delete(int idDocente) {
-        if(docenteCrud.findByIdDocente(idDocente)!=null){
-            DocenteEntity docenteEntity = (DocenteEntity) docenteCrud.findByIdDocente(idDocente);
+        if(docenteCrud.findByIdDocentes(idDocente)!=null){
+            DocenteEntity docenteEntity = (DocenteEntity) docenteCrud.findByIdDocentes(idDocente);
             docenteEntity.setEstado('N');
             docenteCrud.save(docenteEntity);
             return true;

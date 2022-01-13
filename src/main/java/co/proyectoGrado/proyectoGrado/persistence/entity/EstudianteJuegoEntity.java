@@ -26,6 +26,6 @@ public class EstudianteJuegoEntity {
 
 
     @OneToOne
-    @JoinColumn(name="idEstudiante",insertable = false, updatable = false)
+    @JoinColumn(name="idEstudiantes",insertable = false, updatable = false)
     private EstudianteEntity estudiante;
 }

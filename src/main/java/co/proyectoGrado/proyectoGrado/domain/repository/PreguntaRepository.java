@@ -2,6 +2,7 @@ package co.proyectoGrado.proyectoGrado.domain.repository;
 
 
 import co.proyectoGrado.proyectoGrado.domain.model.Pregunta;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

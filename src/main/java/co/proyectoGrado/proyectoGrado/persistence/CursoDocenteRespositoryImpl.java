@@ -39,7 +39,7 @@ public class CursoDocenteRespositoryImpl implements CursoDocenteRepository {
     @Override
     public CursoDocente get(int idCursoDocente) {
 
-        CursoDocenteEntity cursoDocenteEntity = cursoDocenteCrud.findFirstById(idCursoDocente);
+        CursoDocenteEntity cursoDocenteEntity = cursoDocenteCrud.findFirstByIdCursoDocente(idCursoDocente);
         if (cursoDocenteEntity != null) {
             return new CursoDocente(cursoDocenteEntity.getIdCursoDocente(),
                     cursoDocenteEntity.getDocente().getIdDocentes(), cursoDocenteEntity.getCurso().getIdCursos(),
@@ -52,7 +52,7 @@ public class CursoDocenteRespositoryImpl implements CursoDocenteRepository {
     @Override
     public CursoDocente getIdDocente(int idDocente) {
 
-        CursoDocenteEntity cursoDocenteEntity = CursoDocenteCrud.findByIdCursoDocente(idDocente);
+        CursoDocenteEntity cursoDocenteEntity = cursoDocenteCrud.findByIdCursoDocente(idDocente);
         if (cursoDocenteEntity != null) {
             return new CursoDocente(cursoDocenteEntity.getIdCursoDocente(),
                     cursoDocenteEntity.getDocente().getIdDocentes(), cursoDocenteEntity.getCurso().getIdCursos(),
@@ -111,8 +111,8 @@ public class CursoDocenteRespositoryImpl implements CursoDocenteRepository {
 
     @Override
     public Boolean delete(int idCursoDocente) {
-        if(CursoDocenteCrud.findByIdCursoDocente(idCursoDocente)!=null){
-            CursoDocenteEntity cursoDocenteEntity = (CursoDocenteEntity) CursoDocenteCrud.findByIdCursoDocente(idCursoDocente);
+        if(cursoDocenteCrud.findByIdCursoDocente(idCursoDocente)!=null){
+            CursoDocenteEntity cursoDocenteEntity =  cursoDocenteCrud.findByIdCursoDocente(idCursoDocente);
             cursoDocenteCrud.save(cursoDocenteEntity);
             return true;
         }else{

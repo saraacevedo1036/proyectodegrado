@@ -13,7 +13,7 @@ import java.util.List;
 public class RetoEntity {
 
     @Id
-    @Column(name = "idReto")
+    @Column(name = "idreto")
     private int idReto;
     @Column(name = "tipo")
     private String tipo;
