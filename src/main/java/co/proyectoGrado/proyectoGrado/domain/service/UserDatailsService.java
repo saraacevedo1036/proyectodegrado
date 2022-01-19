@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class UserDatailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        //Agregar base de datos
         return new User("alejandro", "{noop}123456", new ArrayList<>());
     }
 }
