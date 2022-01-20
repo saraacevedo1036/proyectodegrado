@@ -1,13 +1,9 @@
 package co.proyectoGrado.proyectoGrado.domain.service;
 
-import co.proyectoGrado.proyectoGrado.domain.model.Docente;
 import co.proyectoGrado.proyectoGrado.domain.model.Estudiante;
-import co.proyectoGrado.proyectoGrado.domain.repository.DocenteRepository;
 import co.proyectoGrado.proyectoGrado.domain.repository.EstudianteRepository;
 import co.proyectoGrado.proyectoGrado.persistence.crud.EstudianteCrud;
-import co.proyectoGrado.proyectoGrado.persistence.crud.EstudianteJuegoRespuestasCrud;
 import co.proyectoGrado.proyectoGrado.persistence.entity.EstudianteEntity;
-import co.proyectoGrado.proyectoGrado.persistence.entity.EstudianteJuegoRespuestasEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +14,15 @@ import java.util.List;
 public class EstudianteService {
 
     private final EstudianteRepository estudianteRepository;
+
     @Autowired
     private EstudianteCrud estudianteCrud;
 
     @Autowired
 
-    public EstudianteService(EstudianteRepository estudianteRepository) { this.estudianteRepository = estudianteRepository; }
+    public EstudianteService(EstudianteRepository estudianteRepository) {
+        this.estudianteRepository = estudianteRepository;
+    }
 
     public Estudiante get(String email) {
         return estudianteRepository.get(email);
