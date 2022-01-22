@@ -2,12 +2,11 @@ package co.proyectoGrado.proyectoGrado.domain.service;
 
 import co.proyectoGrado.proyectoGrado.domain.model.Docente;
 import co.proyectoGrado.proyectoGrado.domain.repository.DocenteRepository;
-import co.proyectoGrado.proyectoGrado.persistence.crud.CursoCrud;
 import co.proyectoGrado.proyectoGrado.persistence.crud.DocenteCrud;
-import co.proyectoGrado.proyectoGrado.persistence.entity.CursosEstudiantesEntity;
 import co.proyectoGrado.proyectoGrado.persistence.entity.DocenteEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +18,12 @@ public class DocenteService {
     private DocenteCrud docenteCrud;
 
     @Autowired
-    public DocenteService(DocenteRepository docenteRepository) {
+    private final BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    public DocenteService(DocenteRepository docenteRepository,BCryptPasswordEncoder passwordEncoder) {
         this.docenteRepository = docenteRepository;
+        this.passwordEncoder =passwordEncoder;
     }
     private final ModelMapper mapper = new ModelMapper();
 
@@ -32,6 +35,7 @@ public class DocenteService {
     }
 
     public boolean save(Docente docente) {
+        docente.setContrasena(encodeContrasena(docente.getContrasena()));
         DocenteEntity contenido = mapper.map(docente, DocenteEntity.class);
         try {
             docenteCrud.save(contenido);
@@ -49,6 +53,10 @@ public class DocenteService {
     public boolean eliminar(int id){
 
         return docenteRepository.delete(id);
+    }
+
+    private String encodeContrasena(String contrasena){
+        return passwordEncoder.encode(contrasena);
     }
 
 

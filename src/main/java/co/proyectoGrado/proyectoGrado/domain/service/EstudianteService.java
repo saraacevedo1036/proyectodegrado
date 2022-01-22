@@ -6,6 +6,7 @@ import co.proyectoGrado.proyectoGrado.persistence.crud.EstudianteCrud;
 import co.proyectoGrado.proyectoGrado.persistence.entity.EstudianteEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,9 +20,12 @@ public class EstudianteService {
     private EstudianteCrud estudianteCrud;
 
     @Autowired
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    public EstudianteService(EstudianteRepository estudianteRepository) {
+    @Autowired
+    public EstudianteService(EstudianteRepository estudianteRepository,BCryptPasswordEncoder passwordEncoder) {
         this.estudianteRepository = estudianteRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Estudiante get(String email) {
@@ -32,6 +36,7 @@ public class EstudianteService {
     public List<Estudiante> getAll(){return estudianteRepository.getAll();}
 
     public boolean save(Estudiante estudiante) {
+        estudiante.setContrasena(encodeContrasena(estudiante.getContrasena()));
         EstudianteEntity contenido = mapper.map(estudiante, EstudianteEntity.class);
         try {
             estudianteCrud.save(contenido);
@@ -51,4 +56,7 @@ public class EstudianteService {
         return estudianteRepository.delete(id);
     }
 
+    private String encodeContrasena(String contrasena){
+        return passwordEncoder.encode(contrasena);
+    }
 }
