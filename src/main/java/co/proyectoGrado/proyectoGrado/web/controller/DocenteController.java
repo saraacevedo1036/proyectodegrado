@@ -5,6 +5,7 @@ import co.proyectoGrado.proyectoGrado.domain.service.DocenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -21,6 +22,8 @@ public class DocenteController {
         this.docenteService = docenteService;
     }
 
+    //Quitar anotacion e ubicar en el lugar que debe de ir
+    @PreAuthorize("hasRole('ROLE_DOCENTE')")
     @GetMapping()
     public ResponseEntity<List<Docente>> getAll(){
         return new ResponseEntity<>(docenteService.getAll(),HttpStatus.OK);

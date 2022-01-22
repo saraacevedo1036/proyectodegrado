@@ -23,7 +23,7 @@ public class EstudianteEntity {
     private int identificacion;
     @Column(name = "correo")
     private String correo;
-    @Column(name = "contraseña")
+    @Column(name = "contrasena")
     private String contrasena;
     @Column(name = "estado")
     private char estado;

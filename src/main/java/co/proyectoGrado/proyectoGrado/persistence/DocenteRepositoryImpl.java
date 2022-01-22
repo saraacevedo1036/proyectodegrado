@@ -57,11 +57,11 @@ public class DocenteRepositoryImpl implements DocenteRepository {
     public Docente get(String email) {
         DocenteEntity docenteEntity = docenteCrud.findFirstByCorreo(email);
 
-        if (docenteEntity != null && docenteEntity.getEstado()=='S') {
+        if (docenteEntity != null && docenteEntity.getEstado()=='t') {
             return new Docente(docenteEntity.getIdDocentes(), docenteEntity.getNombre(),
                     docenteEntity.getApellido(), docenteEntity.getIdentificacion(),
                     docenteEntity.getCorreo(), docenteEntity.getContrasena(),
-                    "S".equals(docenteEntity.getEstado()));
+                    "t".equals(docenteEntity.getEstado()));
         } else {
             return null;
         }

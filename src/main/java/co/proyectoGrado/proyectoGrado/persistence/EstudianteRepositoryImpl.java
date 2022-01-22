@@ -42,11 +42,11 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
     public Estudiante get(int identificacion) {
         EstudianteEntity estudianteEntity = estudianteCrud.findFirstByIdentificacion(identificacion);
 
-        if (estudianteEntity != null && estudianteEntity.getEstado()=='S') {
+        if (estudianteEntity != null && estudianteEntity.getEstado()=='t') {
             return new Estudiante(estudianteEntity.getIdEstudiantes(), estudianteEntity.getNombre(),
                     estudianteEntity.getApellido(), estudianteEntity.getIdentificacion(),
                     estudianteEntity.getCorreo(), estudianteEntity.getContrasena(),
-                    "S".equals(estudianteEntity.getEstado()));
+                    "t".equals(estudianteEntity.getEstado()));
         } else {
             return null;
         }

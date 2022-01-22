@@ -1,6 +1,5 @@
 package co.proyectoGrado.proyectoGrado.persistence.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,7 +23,7 @@ public class DocenteEntity {
     private int identificacion;
     @Column(name = "correo")
     private String correo;
-    @Column(name = "contraseña")
+    @Column(name = "contrasena")
     private String contrasena;
     @Column(name = "estado")
     private char estado;
