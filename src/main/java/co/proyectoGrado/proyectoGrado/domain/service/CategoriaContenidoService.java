@@ -1,17 +1,11 @@
 package co.proyectoGrado.proyectoGrado.domain.service;
 
 import co.proyectoGrado.proyectoGrado.domain.model.CategoriaContenido;
-import co.proyectoGrado.proyectoGrado.domain.model.CursoContenido;
-import co.proyectoGrado.proyectoGrado.domain.model.Docente;
 import co.proyectoGrado.proyectoGrado.domain.repository.CategoriaContenidoRepository;
-import co.proyectoGrado.proyectoGrado.domain.repository.DocenteRepository;
-import co.proyectoGrado.proyectoGrado.persistence.crud.CategoriaContenidoCrud;
-import co.proyectoGrado.proyectoGrado.persistence.crud.CursoContenidoCrud;
-import co.proyectoGrado.proyectoGrado.persistence.entity.CategoriaContenidoEntity;
-import co.proyectoGrado.proyectoGrado.persistence.entity.CursoContenidoEntity;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.CategoriaContenidoCrud;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.CategoriaContenidoEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service

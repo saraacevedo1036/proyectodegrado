@@ -1,9 +1,7 @@
 package co.proyectoGrado.proyectoGrado.web.controller;
 
 import co.proyectoGrado.proyectoGrado.domain.model.CategoriaContenido;
-import co.proyectoGrado.proyectoGrado.domain.model.Docente;
 import co.proyectoGrado.proyectoGrado.domain.service.CategoriaContenidoService;
-import co.proyectoGrado.proyectoGrado.domain.service.DocenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,11 +27,11 @@ public class CategoriaContenidoController {
     public ResponseEntity<Boolean> save(@RequestBody CategoriaContenido docente) {
         return new ResponseEntity<>(categoriaContenidoService.save(docente), HttpStatus.CREATED);
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<Boolean> actualizar(@PathVariable("id") int id, @RequestBody CategoriaContenido categoriaContenido){
         return new ResponseEntity<>(categoriaContenidoService.actualizar(id, categoriaContenido), HttpStatus.OK);
     }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> eliminar(@PathVariable int id){

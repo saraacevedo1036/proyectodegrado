@@ -2,10 +2,8 @@ package co.proyectoGrado.proyectoGrado.domain.service;
 
 import co.proyectoGrado.proyectoGrado.domain.model.EstudianteJuego;
 import co.proyectoGrado.proyectoGrado.domain.repository.EstudianteJuegoRepository;
-import co.proyectoGrado.proyectoGrado.persistence.crud.EstudianteJuegoCrud;
-import co.proyectoGrado.proyectoGrado.persistence.crud.EstudianteJuegoRespuestasCrud;
-import co.proyectoGrado.proyectoGrado.persistence.entity.EstudianteJuegoEntity;
-import co.proyectoGrado.proyectoGrado.persistence.entity.EstudianteJuegoRespuestasEntity;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.EstudianteJuegoCrud;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.EstudianteJuegoEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

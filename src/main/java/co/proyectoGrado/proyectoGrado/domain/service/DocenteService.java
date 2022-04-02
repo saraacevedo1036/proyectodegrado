@@ -2,8 +2,8 @@ package co.proyectoGrado.proyectoGrado.domain.service;
 
 import co.proyectoGrado.proyectoGrado.domain.model.Docente;
 import co.proyectoGrado.proyectoGrado.domain.repository.DocenteRepository;
-import co.proyectoGrado.proyectoGrado.persistence.crud.DocenteCrud;
-import co.proyectoGrado.proyectoGrado.persistence.entity.DocenteEntity;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.DocenteCrud;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.DocenteEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,7 +21,7 @@ public class DocenteService {
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public DocenteService(DocenteRepository docenteRepository,BCryptPasswordEncoder passwordEncoder) {
+    public DocenteService(DocenteRepository docenteRepository, BCryptPasswordEncoder passwordEncoder) {
         this.docenteRepository = docenteRepository;
         this.passwordEncoder =passwordEncoder;
     }

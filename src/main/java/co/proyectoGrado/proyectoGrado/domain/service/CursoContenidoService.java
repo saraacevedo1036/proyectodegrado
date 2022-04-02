@@ -3,8 +3,8 @@ package co.proyectoGrado.proyectoGrado.domain.service;
 
 import co.proyectoGrado.proyectoGrado.domain.model.CursoContenido;
 import co.proyectoGrado.proyectoGrado.domain.repository.CursoContenidoRepository;
-import co.proyectoGrado.proyectoGrado.persistence.crud.CursoContenidoCrud;
-import co.proyectoGrado.proyectoGrado.persistence.entity.CursoContenidoEntity;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.CursoContenidoCrud;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.CursoContenidoEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -2,15 +2,12 @@ package co.proyectoGrado.proyectoGrado.domain.service;
 
 import co.proyectoGrado.proyectoGrado.domain.model.Reto;
 import co.proyectoGrado.proyectoGrado.domain.repository.RetoRepository;
-import co.proyectoGrado.proyectoGrado.persistence.crud.JuegoPreguntasCrud;
-import co.proyectoGrado.proyectoGrado.persistence.crud.RetoCrud;
-import co.proyectoGrado.proyectoGrado.persistence.entity.JuegoPreguntasEntity;
-import co.proyectoGrado.proyectoGrado.persistence.entity.RetoEntity;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.RetoCrud;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.RetoEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.StyledEditorKit;
 import java.util.List;
 @Service
 public class RetoService {

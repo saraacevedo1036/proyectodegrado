@@ -2,8 +2,8 @@ package co.proyectoGrado.proyectoGrado.domain.service;
 
 import co.proyectoGrado.proyectoGrado.domain.model.Estudiante;
 import co.proyectoGrado.proyectoGrado.domain.repository.EstudianteRepository;
-import co.proyectoGrado.proyectoGrado.persistence.crud.EstudianteCrud;
-import co.proyectoGrado.proyectoGrado.persistence.entity.EstudianteEntity;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.EstudianteCrud;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.EstudianteEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
