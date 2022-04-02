@@ -14,6 +14,7 @@ import java.util.List;
 @Repository
 public class DocenteRepositoryImpl implements DocenteRepository {
     private final DocenteCrud docenteCrud;
+    private final String ACTIVO = "t";
     private static final String EL_DOCENTE_NO_EXISTE_EN_EL_SISTEMA = "El docente con ese id no existe en el sistema";
 
     @Autowired
@@ -29,7 +30,7 @@ public class DocenteRepositoryImpl implements DocenteRepository {
             Docente docente = new Docente(docenteEntity.getIdDocentes(), docenteEntity.getNombre(),
                                             docenteEntity.getApellido(), docenteEntity.getIdentificacion(),
                                             docenteEntity.getCorreo(), docenteEntity.getContrasena(),
-                                            "S".equals(docenteEntity.getEstado()));
+                    ACTIVO.equals(docenteEntity.getEstado()));
             if(docente.isEstado()==true){
                 docentes.add(docente);
             }
@@ -42,7 +43,7 @@ public class DocenteRepositoryImpl implements DocenteRepository {
     public Docente get(int identificacion) {
         DocenteEntity docenteEntity = docenteCrud.findFirstByIdentificacion(identificacion);
 
-        if (!(docenteEntity != null && docenteEntity.getEstado()=='S')) {
+        if (!(docenteEntity != null && docenteEntity.getEstado()=="t")) {
             throw new ExcepcionValorInvalido(EL_DOCENTE_NO_EXISTE_EN_EL_SISTEMA);
         }
         return new Docente(docenteEntity.getIdDocentes(), docenteEntity.getNombre(),
@@ -54,12 +55,11 @@ public class DocenteRepositoryImpl implements DocenteRepository {
     @Override
     public Docente get(String email) {
         DocenteEntity docenteEntity = docenteCrud.findFirstByCorreo(email);
-
-        if (docenteEntity != null && docenteEntity.getEstado()=='t') {
+        if (docenteEntity != null && ACTIVO.equals(docenteEntity.getEstado())) {
             return new Docente(docenteEntity.getIdDocentes(), docenteEntity.getNombre(),
                     docenteEntity.getApellido(), docenteEntity.getIdentificacion(),
                     docenteEntity.getCorreo(), docenteEntity.getContrasena(),
-                    "t".equals(docenteEntity.getEstado()));
+                    ACTIVO.equals(docenteEntity.getEstado()));
         } else {
             return null;
         }
@@ -76,7 +76,7 @@ public class DocenteRepositoryImpl implements DocenteRepository {
             docenteEntity.setIdentificacion(docente.getIdentificacion());
             docenteEntity.setCorreo(docente.getCorreo());
             docenteEntity.setContrasena(docente.getContrasena());
-            docenteEntity.setEstado(docente.isEstado() ? 'S' : 'N');
+            docenteEntity.setEstado(docente.isEstado() ? "t" : "f");
 
             docenteCrud.save(docenteEntity);
 
@@ -101,7 +101,7 @@ public class DocenteRepositoryImpl implements DocenteRepository {
                 docenteEntity.setIdentificacion(docente.getIdentificacion());
                 docenteEntity.setCorreo(docente.getCorreo());
                 docenteEntity.setContrasena(docente.getContrasena());
-                docenteEntity.setEstado(docente.isEstado() ? 'S' : 'N');
+                docenteEntity.setEstado(docente.isEstado() ? "t" : "f");
 
                 docenteCrud.save(docenteEntity);
 
@@ -119,7 +119,7 @@ public class DocenteRepositoryImpl implements DocenteRepository {
     public boolean delete(int idDocente) {
         if(docenteCrud.findByIdDocentes(idDocente)!=null){
             DocenteEntity docenteEntity = (DocenteEntity) docenteCrud.findByIdDocentes(idDocente);
-            docenteEntity.setEstado('N');
+            docenteEntity.setEstado("f");
             docenteCrud.save(docenteEntity);
             return true;
         }else{

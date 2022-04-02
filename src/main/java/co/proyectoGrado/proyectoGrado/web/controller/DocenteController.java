@@ -23,11 +23,12 @@ public class DocenteController {
     }
 
     //Quitar anotacion e ubicar en el lugar que debe de ir
-    @PreAuthorize("hasRole('ROLE_DOCENTE')")
+    //@PreAuthorize("hasRole('ROLE_DOCENTE')")
     @GetMapping()
     public ResponseEntity<List<Docente>> getAll(){
         return new ResponseEntity<>(docenteService.getAll(),HttpStatus.OK);
     }
+
     @GetMapping("/email/{email}")
     public ResponseEntity<Docente> getByEmail(@PathVariable("email") String email) {
         return new ResponseEntity<>(docenteService.get(email), HttpStatus.OK);

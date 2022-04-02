@@ -35,6 +35,7 @@ public class UserDatailsService implements UserDetailsService {
         Estudiante estudiante =  estudianteRepository.get(email);
         Docente docente = docenteRepository.get(email);
         if(estudiante==null && docente == null) {
+            //Validar como enviar una excepción que diga algo
             throw new UsernameNotFoundException(email);
         }
         return getUser(estudiante, docente);
