@@ -34,7 +34,7 @@ public class DocenteController {
         return new ResponseEntity<>(docenteService.get(email), HttpStatus.OK);
     }
 
-    @PostMapping()
+    @PostMapping("/save")
     public ResponseEntity<Boolean> save(@RequestBody Docente docente) {
         return new ResponseEntity<>(docenteService.save(docente), HttpStatus.CREATED);
     }

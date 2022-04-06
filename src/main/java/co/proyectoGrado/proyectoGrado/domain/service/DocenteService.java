@@ -38,7 +38,7 @@ public class DocenteService {
         docente.setContrasena(encodeContrasena(docente.getContrasena()));
         DocenteEntity contenido = mapper.map(docente, DocenteEntity.class);
         try {
-            docenteCrud.save(contenido);
+            docenteRepository.save(docente);
             return Boolean.TRUE;
         } catch (Exception e) {
             e.printStackTrace();

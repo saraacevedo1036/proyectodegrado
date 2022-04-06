@@ -76,7 +76,7 @@ public class DocenteRepositoryImpl implements DocenteRepository {
             docenteEntity.setIdentificacion(docente.getIdentificacion());
             docenteEntity.setCorreo(docente.getCorreo());
             docenteEntity.setContrasena(docente.getContrasena());
-            docenteEntity.setEstado(docente.isEstado() ? "t" : "f");
+            docenteEntity.setEstado(docente.isEstado() ? String.valueOf('t') : String.valueOf('f'));
 
             docenteCrud.save(docenteEntity);
 

@@ -28,8 +28,6 @@ public class DocenteEntity {
     @Column(name = "estado")
     private String estado;
 
-    /*@OneToMany(mappedBy = "docente")
-    private List<CursoDocenteEntity> cursoDocentes;*/
-
-
+    @OneToMany(mappedBy = "docente")
+    private List<CursoDocenteEntity> cursoDocentes;
 }
