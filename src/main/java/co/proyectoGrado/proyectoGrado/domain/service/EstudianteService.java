@@ -1,8 +1,12 @@
 package co.proyectoGrado.proyectoGrado.domain.service;
 
+import co.proyectoGrado.proyectoGrado.domain.model.Docente;
 import co.proyectoGrado.proyectoGrado.domain.model.Estudiante;
+import co.proyectoGrado.proyectoGrado.domain.repository.DocenteRepository;
 import co.proyectoGrado.proyectoGrado.domain.repository.EstudianteRepository;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.DocenteCrud;
 import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.EstudianteCrud;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.DocenteEntity;
 import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.EstudianteEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +19,6 @@ import java.util.List;
 public class EstudianteService {
 
     private final EstudianteRepository estudianteRepository;
-
     @Autowired
     private EstudianteCrud estudianteCrud;
 
@@ -23,23 +26,24 @@ public class EstudianteService {
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public EstudianteService(EstudianteRepository estudianteRepository,BCryptPasswordEncoder passwordEncoder) {
+    public EstudianteService(EstudianteRepository estudianteRepository, BCryptPasswordEncoder passwordEncoder) {
         this.estudianteRepository = estudianteRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
-
-    public Estudiante get(String email) {
-        return estudianteRepository.get(email);
+        this.passwordEncoder =passwordEncoder;
     }
     private final ModelMapper mapper = new ModelMapper();
 
-    public List<Estudiante> getAll(){return estudianteRepository.getAll();}
+    public List<Estudiante> getAll(){
+        return estudianteRepository.getAll();
+    }
+    public Estudiante get(String email) {
+        return estudianteRepository.get(email);
+    }
 
     public boolean save(Estudiante estudiante) {
         estudiante.setContrasena(encodeContrasena(estudiante.getContrasena()));
         EstudianteEntity contenido = mapper.map(estudiante, EstudianteEntity.class);
         try {
-            estudianteCrud.save(contenido);
+            estudianteRepository.save(estudiante);
             return Boolean.TRUE;
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,16 +51,18 @@ public class EstudianteService {
         }
     }
 
-
     public Boolean actualizar(int id, Estudiante estudiante) {
         return  estudianteRepository.actualizar(id, estudiante);
     }
 
-    public Boolean eliminar(int id){
+    public boolean eliminar(int id){
+
         return estudianteRepository.delete(id);
     }
 
     private String encodeContrasena(String contrasena){
         return passwordEncoder.encode(contrasena);
     }
+
+
 }

@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/students")
 public class EstudianteController {
+
     private final EstudianteService estudianteService;
 
     @Autowired
@@ -29,11 +30,12 @@ public class EstudianteController {
     public ResponseEntity<Estudiante> getByEmail(@PathVariable("email") String email) {
         return new ResponseEntity<>(estudianteService.get(email), HttpStatus.OK);
     }
-
-    @PostMapping()
+    @PostMapping("/save")
     public ResponseEntity<Boolean> save(@RequestBody Estudiante estudiante) {
         return new ResponseEntity<>(estudianteService.save(estudiante), HttpStatus.CREATED);
     }
+
+
     @PutMapping("/{id}")
     public ResponseEntity<Boolean> actualizar(@PathVariable("id") int id, @RequestBody Estudiante estudiante){
         return new ResponseEntity<>(estudianteService.actualizar(id, estudiante), HttpStatus.OK);

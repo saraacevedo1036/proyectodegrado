@@ -26,11 +26,11 @@ public class EstudianteEntity {
     @Column(name = "contrasena")
     private String contrasena;
     @Column(name = "estado")
-    private char estado;
+    private String estado;
 
-    @OneToMany(mappedBy = "estudiante")
+    /*@OneToMany(mappedBy = "estudiante")
     private List<CursosEstudiantesEntity> cursoEstudiantes;
 
     @OneToOne(mappedBy = "estudiante")
-    private EstudianteJuegoEntity estudianteJuego;
+    private EstudianteJuegoEntity estudianteJuego;*/
 }

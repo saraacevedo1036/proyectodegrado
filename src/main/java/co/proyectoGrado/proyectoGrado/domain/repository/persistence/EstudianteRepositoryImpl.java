@@ -1,9 +1,13 @@
 package co.proyectoGrado.proyectoGrado.domain.repository.persistence;
 
+import co.proyectoGrado.proyectoGrado.domain.model.Docente;
 import co.proyectoGrado.proyectoGrado.domain.model.Estudiante;
 import co.proyectoGrado.proyectoGrado.domain.repository.EstudianteRepository;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.DocenteCrud;
 import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.EstudianteCrud;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.DocenteEntity;
 import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.EstudianteEntity;
+import co.proyectoGrado.proyectoGrado.excepciones.excepcion.ExcepcionValorInvalido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +17,9 @@ import java.util.List;
 @Repository
 public class EstudianteRepositoryImpl implements EstudianteRepository {
     private final EstudianteCrud estudianteCrud;
+    private final String ACTIVO = "t";
+    private static final String EL_ESTUDIANTE_NO_EXISTE_EN_EL_SISTEMA = "El estudiante con ese id no existe en el sistema";
+
 
     @Autowired
     public EstudianteRepositoryImpl(EstudianteCrud estudianteCrud) {
@@ -27,7 +34,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
                     estudianteEntity.getNombre(),
                     estudianteEntity.getApellido(), estudianteEntity.getIdentificacion(),
                     estudianteEntity.getCorreo(), estudianteEntity.getContrasena(),
-                    "S".equals(estudianteEntity.getEstado()));
+                    ACTIVO.equals(estudianteEntity.getEstado()));
 
             if(estudiante.isEstado()==true){
                estudiantes.add(estudiante);
@@ -42,29 +49,30 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
     public Estudiante get(int identificacion) {
         EstudianteEntity estudianteEntity = estudianteCrud.findFirstByIdentificacion(identificacion);
 
-        if (estudianteEntity != null && estudianteEntity.getEstado()=='t') {
-            return new Estudiante(estudianteEntity.getIdEstudiantes(), estudianteEntity.getNombre(),
-                    estudianteEntity.getApellido(), estudianteEntity.getIdentificacion(),
-                    estudianteEntity.getCorreo(), estudianteEntity.getContrasena(),
-                    "t".equals(estudianteEntity.getEstado()));
-        } else {
-            return null;
+
+        if (!(estudianteEntity != null && estudianteEntity.getEstado()=="t")) {
+            throw new ExcepcionValorInvalido(EL_ESTUDIANTE_NO_EXISTE_EN_EL_SISTEMA);
         }
+        return new Estudiante(estudianteEntity.getIdEstudiantes(), estudianteEntity.getNombre(),
+                estudianteEntity.getApellido(), estudianteEntity.getIdentificacion(),
+                estudianteEntity.getCorreo(), estudianteEntity.getContrasena(),
+                "S".equals(estudianteEntity.getEstado()));
     }
 
     @Override
     public Estudiante get(String email) {
         EstudianteEntity estudianteEntity = estudianteCrud.findFirstByCorreo(email);
 
-        if (estudianteEntity != null && estudianteEntity.getEstado()=='S') {
+        if (estudianteEntity != null && ACTIVO.equals(estudianteEntity.getEstado())) {
             return new Estudiante(estudianteEntity.getIdEstudiantes(), estudianteEntity.getNombre(),
                     estudianteEntity.getApellido(), estudianteEntity.getIdentificacion(),
                     estudianteEntity.getCorreo(), estudianteEntity.getContrasena(),
-                    "S".equals(estudianteEntity.getEstado()));
+                    ACTIVO.equals(estudianteEntity.getEstado()));
         } else {
             return null;
         }
     }
+
 
     @Override
     public boolean save(Estudiante estudiante) {
@@ -77,7 +85,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
             estudianteEntity.setIdentificacion(estudiante.getIdentificacion());
             estudianteEntity.setCorreo(estudiante.getCorreo());
             estudianteEntity.setContrasena(estudiante.getContrasena());
-            estudianteEntity.setEstado(estudiante.isEstado() ? 'S' : 'N');
+            estudianteEntity.setEstado(estudiante.isEstado() ? String.valueOf('t') : String.valueOf('f'));
 
             estudianteCrud.save(estudianteEntity);
 
@@ -87,6 +95,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
             return false;
         }
     }
+
     @Override
     public Boolean actualizar(int id, Estudiante estudiante) {
         if(estudianteCrud.findById(id)!=null){
@@ -101,7 +110,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
                 estudianteEntity.setIdentificacion(estudiante.getIdentificacion());
                 estudianteEntity.setCorreo(estudiante.getCorreo());
                 estudianteEntity.setContrasena(estudiante.getContrasena());
-                estudianteEntity.setEstado(estudiante.isEstado() ? 'S' : 'N');
+                estudianteEntity.setEstado(estudiante.isEstado() ? "t" : "f");
 
                 estudianteCrud.save(estudianteEntity);
 
@@ -119,7 +128,7 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
     public boolean delete(int idEstudiante) {
         if(estudianteCrud.findByIdEstudiantes(idEstudiante)!=null){
            EstudianteEntity estudianteEntity = (EstudianteEntity) estudianteCrud.findByIdEstudiantes(idEstudiante);
-            estudianteEntity.setEstado('N');
+            estudianteEntity.setEstado("f");
             estudianteCrud.save(estudianteEntity);
             return true;
         }else{
@@ -127,7 +136,6 @@ public class EstudianteRepositoryImpl implements EstudianteRepository {
         }
     }
 }
-
 
 
 
