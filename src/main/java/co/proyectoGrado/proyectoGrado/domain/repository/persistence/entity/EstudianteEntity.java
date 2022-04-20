@@ -28,9 +28,9 @@ public class EstudianteEntity {
     @Column(name = "estado")
     private String estado;
 
-    /*@OneToMany(mappedBy = "estudiante")
+    @OneToMany(mappedBy = "estudiante")
     private List<CursosEstudiantesEntity> cursoEstudiantes;
 
-    @OneToOne(mappedBy = "estudiante")
+    /*@OneToOne(mappedBy = "estudiante",cascade = CascadeType.ALL)
     private EstudianteJuegoEntity estudianteJuego;*/
 }

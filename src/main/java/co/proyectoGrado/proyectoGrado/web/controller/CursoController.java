@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/coursecontroller")
+@RequestMapping("/api/course")
 public class CursoController {
 
     private final CursoService cursoService;
@@ -27,12 +27,15 @@ public class CursoController {
         return new ResponseEntity<>(cursoService.getAll(),HttpStatus.OK);
     }
 
+
+
     @GetMapping("/grado/{grado}")
     public ResponseEntity<Curso> getByGrado(@PathVariable("grado") String grado) {
         return new ResponseEntity<>(cursoService.get(grado), HttpStatus.OK);
     }
 
-    @PostMapping()
+
+    @PostMapping("/save")
     public ResponseEntity<Boolean> save(@RequestBody Curso curso) {
         return new ResponseEntity<>(cursoService.save(curso), HttpStatus.CREATED);
     }

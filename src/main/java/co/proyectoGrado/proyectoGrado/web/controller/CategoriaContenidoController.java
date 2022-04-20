@@ -23,9 +23,9 @@ public class CategoriaContenidoController {
         return new ResponseEntity<>(categoriaContenidoService.get(Integer.parseInt(idCategoria)), HttpStatus.OK);
     }
 
-    @PostMapping()
-    public ResponseEntity<Boolean> save(@RequestBody CategoriaContenido docente) {
-        return new ResponseEntity<>(categoriaContenidoService.save(docente), HttpStatus.CREATED);
+    @PostMapping("/save")
+    public ResponseEntity<Boolean> save(@RequestBody CategoriaContenido categoriaContenido) {
+        return new ResponseEntity<>(categoriaContenidoService.save(categoriaContenido), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

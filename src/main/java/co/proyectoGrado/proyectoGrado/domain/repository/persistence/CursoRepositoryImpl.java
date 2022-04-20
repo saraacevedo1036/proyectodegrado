@@ -1,9 +1,12 @@
 package co.proyectoGrado.proyectoGrado.domain.repository.persistence;
 
 import co.proyectoGrado.proyectoGrado.domain.model.Curso;
+import co.proyectoGrado.proyectoGrado.domain.model.Docente;
+import co.proyectoGrado.proyectoGrado.domain.model.Estudiante;
 import co.proyectoGrado.proyectoGrado.domain.repository.CursoRepository;
 import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.CursoCrud;
 import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.CursoEntity;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.DocenteEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -57,6 +60,8 @@ public class CursoRepositoryImpl implements CursoRepository {
             return null;
         }
     }
+
+
 
     @Override
     public Boolean save(Curso curso) {

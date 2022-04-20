@@ -18,7 +18,7 @@ public class CategoriaContenidoEntity {
     @JoinColumn(name="idPreguntas", insertable = false, updatable = false)
     private PreguntaEntity pregunta;
 
-    @OneToOne(mappedBy = "categoriaContenido")
-    private CursoContenidoEntity cursoContenido;
+    /*@OneToOne(mappedBy = "categoriaContenido , cascade = CascadeType.ALL")
+    private CursoContenidoEntity cursoContenido;*/
 
 }

@@ -9,7 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RestController
+@RequestMapping("/api/gamequestions")
 public class JuegoPreguntasController {
     private final JuegoPreguntasService juegoPreguntasService;
 
@@ -27,7 +28,7 @@ public class JuegoPreguntasController {
         return new ResponseEntity<>(juegoPreguntasService.get(idJuegoPregunta), HttpStatus.OK);
     }
 
-    @PostMapping()
+    @PostMapping("/save")
     public ResponseEntity<Boolean> save(@RequestBody JuegoPregunta juegoPregunta) {
         return new ResponseEntity<>(juegoPreguntasService.save(juegoPregunta), HttpStatus.CREATED);
     }
