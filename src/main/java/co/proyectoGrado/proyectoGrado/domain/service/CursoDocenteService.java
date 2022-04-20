@@ -3,11 +3,17 @@ package co.proyectoGrado.proyectoGrado.domain.service;
 import co.proyectoGrado.proyectoGrado.domain.model.CursoDocente;
 import co.proyectoGrado.proyectoGrado.domain.repository.CursoDocenteRepository;
 
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.CursoCrud;
 import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.CursoDocenteCrud;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.DocenteCrud;
 import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.CursoDocenteEntity;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.CursoEntity;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.DocenteEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CursoDocenteService {
@@ -17,9 +23,17 @@ public class CursoDocenteService {
     private CursoDocenteCrud cursoDocenteCrud;
 
     @Autowired
+    private CursoCrud cursoCrud;
+
+    @Autowired
+    private DocenteCrud docenteCrud;
+
+    @Autowired
     public CursoDocenteService(CursoDocenteRepository cursoDocenteRepository) {
         this.cursoDocenteRepository = cursoDocenteRepository;
     }
+
+
     private final ModelMapper mapper = new ModelMapper();
 
 
@@ -28,7 +42,10 @@ public class CursoDocenteService {
         return cursoDocenteRepository.getIdDocente(idcursos);}
 
     public boolean save(CursoDocente cursoDocente) {
-        CursoDocenteEntity contenido = mapper.map(cursoDocente, CursoDocenteEntity.class);
+        CursoEntity cursoEntity = cursoCrud.findById(cursoDocente.getIdCursos()).orElse(null);
+        DocenteEntity docenteEntity = docenteCrud.findById(cursoDocente.getIdDocente()).orElse(null);
+
+        CursoDocenteEntity contenido = new CursoDocenteEntity(cursoDocente.getIdCursoDocente(),docenteEntity,cursoEntity);
         try {
             cursoDocenteCrud.save(contenido);
             return Boolean.TRUE;

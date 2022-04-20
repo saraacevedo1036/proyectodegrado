@@ -1,5 +1,6 @@
 package co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @Entity
 @Table( name = "CURSOS")
 @NoArgsConstructor
+@AllArgsConstructor
 public class CursoEntity {
 
     @Id

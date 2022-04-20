@@ -37,8 +37,6 @@ public class JuegoPreguntasController {
         return new ResponseEntity<>(juegoPreguntasService.actualizar(id, juegoPregunta), HttpStatus.OK);
     }
 
-
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> eliminar(@PathVariable int id){
         return new ResponseEntity<>(juegoPreguntasService.eliminar(id), HttpStatus.OK);

@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CursoDocente {
+
+
     @JsonProperty
     private int idCursoDocente;
     @JsonProperty

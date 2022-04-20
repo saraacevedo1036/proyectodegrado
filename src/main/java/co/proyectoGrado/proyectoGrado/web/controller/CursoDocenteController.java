@@ -9,6 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
+@RestController
+@RequestMapping("/api/courseDocent")
 public class CursoDocenteController {
     private final CursoDocenteService cursodocenteService;
 
@@ -22,7 +25,7 @@ public class CursoDocenteController {
         return new ResponseEntity<>(cursodocenteService.get(iddocentes), HttpStatus.OK);
     }
 
-    @PostMapping()
+    @PostMapping("/save")
     public ResponseEntity<Boolean> save(@RequestBody CursoDocente cursodocente) {
         return new ResponseEntity<>(cursodocenteService.save(cursodocente), HttpStatus.CREATED);
     }
@@ -30,8 +33,6 @@ public class CursoDocenteController {
     public ResponseEntity<Boolean> actualizar(@PathVariable("id") int id, @RequestBody CursoDocente cursoDocente){
         return new ResponseEntity<>(cursodocenteService.actualizar(id, cursoDocente), HttpStatus.OK);
     }
-
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> eliminar(@PathVariable int id){

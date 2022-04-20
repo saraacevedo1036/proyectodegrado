@@ -9,7 +9,14 @@ import javax.persistence.*;
 @Entity
 @Table( name = "CURSO_DOCENTE")
 @NoArgsConstructor
+
 public class CursoDocenteEntity {
+
+    public CursoDocenteEntity(int idCursoDocente, DocenteEntity docente, CursoEntity curso) {
+        this.idCursoDocente = idCursoDocente;
+        this.docente = docente;
+        this.curso = curso;
+    }
 
     @Id
     @Column(name="idcurso_docente")
