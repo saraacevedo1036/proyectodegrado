@@ -2,8 +2,13 @@ package co.proyectoGrado.proyectoGrado.domain.repository.persistence;
 
 import co.proyectoGrado.proyectoGrado.domain.model.CursoEstudiante;
 import co.proyectoGrado.proyectoGrado.domain.repository.CursosEstudiantesRepository;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.CursoCrud;
 import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.CursoEstudianteCrud;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.DocenteCrud;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.crud.EstudianteCrud;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.CursoEntity;
 import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.CursosEstudiantesEntity;
+import co.proyectoGrado.proyectoGrado.domain.repository.persistence.entity.EstudianteEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,11 +18,14 @@ import java.util.List;
 @Repository
 public class CursoEstudiantesRepositoryImpl implements CursosEstudiantesRepository {
     private final CursoEstudianteCrud cursoEstudianteCrud;
-    
+    private final EstudianteCrud estudianteCrud;
+    private final CursoCrud cursoCrud;
 
     @Autowired
-    public CursoEstudiantesRepositoryImpl(CursoEstudianteCrud cursoEstudianteCrud) {
+    public CursoEstudiantesRepositoryImpl(CursoEstudianteCrud cursoEstudianteCrud,EstudianteCrud estudianteCrud,CursoCrud cursoCrud) {
         this.cursoEstudianteCrud = cursoEstudianteCrud;
+        this.estudianteCrud = estudianteCrud;
+        this.cursoCrud = cursoCrud;
     }
 
     @Override
@@ -57,13 +65,10 @@ public class CursoEstudiantesRepositoryImpl implements CursosEstudiantesReposito
     @Override
     public boolean save(CursoEstudiante cursoEstudiante) {
         try {
-            CursosEstudiantesEntity cursosEstudiantesEntity = new CursosEstudiantesEntity();
-
-            cursosEstudiantesEntity.getEstudiante().setIdentificacion(cursoEstudiante.getIdEstudiantes());
-            cursosEstudiantesEntity.getCurso().setIdCursos(cursoEstudiante.getIdCursos());
-
+            EstudianteEntity estudianteEntity = estudianteCrud.findFirstByIdEstudiantes(cursoEstudiante.getIdEstudiantes());
+            CursoEntity cursoEntity = cursoCrud.findFirstByIdCursos(cursoEstudiante.getIdCursos());
+            CursosEstudiantesEntity cursosEstudiantesEntity = new CursosEstudiantesEntity( cursoEstudiante.getIdCursoEstudainte(),estudianteEntity, cursoEntity);
             cursoEstudianteCrud.save(cursosEstudiantesEntity);
-
             return true;
         } catch (Exception e) {
             e.printStackTrace();

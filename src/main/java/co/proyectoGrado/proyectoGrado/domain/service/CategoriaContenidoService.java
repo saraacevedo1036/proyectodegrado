@@ -44,9 +44,6 @@ public class CategoriaContenidoService {
         return categoriaContenidoRepository.actualizar(id, categoriaContenido);
     }
 
-
-
-
     public Boolean eliminar(int id) {
 
         return categoriaContenidoRepository.delete(id);

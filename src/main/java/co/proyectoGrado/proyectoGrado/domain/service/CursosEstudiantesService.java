@@ -19,15 +19,15 @@ public class CursosEstudiantesService {
     public CursosEstudiantesService(CursosEstudiantesRepository cursosEstudiantesRepository) {
         this.cursosEstudiantesRepository = cursosEstudiantesRepository;
     }
-    private final ModelMapper mapper = new ModelMapper();
+   private final ModelMapper mapper = new ModelMapper();
 
    public CursoEstudiante get(int idEstudiantes) {
-        return cursosEstudiantesRepository.getIdEstudiantes(idEstudiantes);}
+        return cursosEstudiantesRepository.getIdEstudiantes(idEstudiantes);
+   }
 
-    public boolean save(CursoEstudiante cursoEstudiante) {
-        CursosEstudiantesEntity contenido = mapper.map(cursoEstudiante, CursosEstudiantesEntity.class);
+   public boolean save(CursoEstudiante cursoEstudiante) {
         try {
-            cursoEstudianteCrud.save(contenido);
+            cursosEstudiantesRepository.save(cursoEstudiante);
             return Boolean.TRUE;
         } catch (Exception e) {
             e.printStackTrace();

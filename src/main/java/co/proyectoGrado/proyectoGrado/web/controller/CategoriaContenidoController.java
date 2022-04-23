@@ -37,5 +37,4 @@ public class CategoriaContenidoController {
     public ResponseEntity<Boolean> eliminar(@PathVariable int id){
         return new ResponseEntity<>(categoriaContenidoService.eliminar(id), HttpStatus.OK);
     }
-
 }
