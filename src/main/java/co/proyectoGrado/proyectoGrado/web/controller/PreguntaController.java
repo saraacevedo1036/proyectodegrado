@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@RestController
+@RequestMapping("/api/Pregunta")
+
 public class PreguntaController {
     private final PreguntaService preguntaService;
 
@@ -28,7 +32,7 @@ public class PreguntaController {
         return new ResponseEntity<>(preguntaService.get(idPreguntas), HttpStatus.OK);
     }
 
-    @PostMapping()
+    @PostMapping("/save")
     public ResponseEntity<Boolean> save(@RequestBody Pregunta pregunta) {
         return new ResponseEntity<>(preguntaService.save(pregunta), HttpStatus.CREATED);
     }

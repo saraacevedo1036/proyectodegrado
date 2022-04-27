@@ -29,9 +29,9 @@ public class RetoService {
     }
 
     public boolean save(Reto reto) {
-        RetoEntity contenido = mapper.map(reto, RetoEntity.class);
+
         try {
-            retoCrud.save(contenido);
+            retoRepository.save(reto);
             return Boolean.TRUE;
         } catch (Exception e) {
             e.printStackTrace();

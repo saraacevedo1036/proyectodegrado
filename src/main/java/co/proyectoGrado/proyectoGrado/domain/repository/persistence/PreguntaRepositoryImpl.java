@@ -27,7 +27,9 @@ public class PreguntaRepositoryImpl implements PreguntaRepository {
             Pregunta pregunta = new Pregunta(preguntaEntity.getIdPregunta(), preguntaEntity.getTexto(),
                     preguntaEntity.getImagen(), preguntaEntity.getRespuesta(), preguntaEntity.getOpcion1(),
                     preguntaEntity.getOpcion2(), preguntaEntity.getOpcion3(), preguntaEntity.getOpcion4(),
-                    "S".equals(preguntaEntity.getEstado()));
+                    "t".equals(preguntaEntity.getEstado()));
+
+            preguntas.add(pregunta);
         });
 
         return preguntas;
@@ -35,7 +37,7 @@ public class PreguntaRepositoryImpl implements PreguntaRepository {
 
     @Override
     public Pregunta get(int idpregunta) {
-        PreguntaEntity preguntaEntity = (PreguntaEntity) preguntaCrud.findByIdPregunta(idpregunta);
+        PreguntaEntity preguntaEntity = preguntaCrud.findFirstByIdPregunta(idpregunta);
         if (preguntaEntity != null) {
             return new Pregunta(preguntaEntity.getIdPregunta(), preguntaEntity.getTexto(),
                     preguntaEntity.getImagen(), preguntaEntity.getRespuesta(), preguntaEntity.getOpcion1(),
@@ -58,8 +60,7 @@ public class PreguntaRepositoryImpl implements PreguntaRepository {
             preguntaEntity.setOpcion2(pregunta.getOpcion2());
             preguntaEntity.setOpcion3(pregunta.getOpcion3());
             preguntaEntity.setOpcion4(pregunta.getOpcion4());
-            preguntaEntity.setEstado(pregunta.isEstado() ? 'S' : 'N');
-
+            preguntaEntity.setEstado(pregunta.isEstado() ? String.valueOf('t') : String.valueOf('f'));
             preguntaCrud.save(preguntaEntity);
             return true;
         } catch (Exception e) {
@@ -82,7 +83,7 @@ public class PreguntaRepositoryImpl implements PreguntaRepository {
                 preguntaEntity.setOpcion2(pregunta.getOpcion2());
                 preguntaEntity.setOpcion3(pregunta.getOpcion3());
                 preguntaEntity.setOpcion4(pregunta.getOpcion4());
-                preguntaEntity.setEstado(pregunta.isEstado() ? 'S' : 'N');
+                preguntaEntity.setEstado(pregunta.isEstado() ? String.valueOf('t') : String.valueOf('f'));
 
                 preguntaCrud.save(preguntaEntity);
                 return true;
@@ -99,7 +100,7 @@ public class PreguntaRepositoryImpl implements PreguntaRepository {
         public Boolean delete ( int idPregunta){
             if (preguntaCrud.findByIdPregunta(idPregunta) != null) {
                 PreguntaEntity preguntaEntity = (PreguntaEntity) preguntaCrud.findByIdPregunta(idPregunta);
-                preguntaEntity.setEstado('N');
+                preguntaEntity.setEstado("f");
                 preguntaCrud.save(preguntaEntity);
                 return true;
             } else {

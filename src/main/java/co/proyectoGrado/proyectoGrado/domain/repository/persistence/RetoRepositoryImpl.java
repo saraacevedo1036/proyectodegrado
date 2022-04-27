@@ -24,7 +24,7 @@ public class RetoRepositoryImpl implements RetoRepository {
         retoCrud.findAll().forEach(retoEntity -> {
             Reto reto = new Reto(retoEntity.getIdReto(),retoEntity.getTipo(),
                     retoEntity.getTitulo(),retoEntity.getDescripcion(),
-                    retoEntity.getComentario(),"S".equals(retoEntity.getEstado()));
+                    retoEntity.getComentario(),"t".equals(retoEntity.getEstado()));
 
             retos.add(reto);
         });
@@ -38,7 +38,7 @@ public class RetoRepositoryImpl implements RetoRepository {
         if(retoEntity!=null){
             return new Reto(retoEntity.getIdReto(),retoEntity.getTipo(),
                     retoEntity.getTitulo(),retoEntity.getDescripcion(),
-                    retoEntity.getComentario(),"S".equals(retoEntity.getEstado()));
+                    retoEntity.getComentario(),"t".equals(retoEntity.getEstado()));
         }else{
             return null;
         }
@@ -50,7 +50,7 @@ public class RetoRepositoryImpl implements RetoRepository {
         if(retoEntity!=null){
             return new Reto(retoEntity.getIdReto(),retoEntity.getTipo(),
                     retoEntity.getTitulo(),retoEntity.getDescripcion(),
-                    retoEntity.getComentario(),"S".equals(retoEntity.getEstado()));
+                    retoEntity.getComentario(),"t".equals(retoEntity.getEstado()));
         }else{
             return null;
         }
@@ -65,7 +65,7 @@ public class RetoRepositoryImpl implements RetoRepository {
             retoEntity.setTitulo(reto.getTitulo());
             retoEntity.setDescripcion(reto.getDescripcion());
             retoEntity.setComentario(reto.getComentario());
-            retoEntity.setEstado(reto.isEstado()? 'S' : 'N');
+            retoEntity.setEstado(reto.isEstado()? String.valueOf('t') : String.valueOf('f'));
             retoCrud.save(retoEntity);
             return true;
         }catch (Exception e){
@@ -85,7 +85,7 @@ public class RetoRepositoryImpl implements RetoRepository {
             retoEntity.setTitulo(reto.getTitulo());
             retoEntity.setDescripcion(reto.getDescripcion());
             retoEntity.setComentario(reto.getComentario());
-            retoEntity.setEstado(reto.isEstado()? 'S' : 'N');
+            retoEntity.setEstado(reto.isEstado()? String.valueOf('t') : String.valueOf('f'));
             retoCrud.save(retoEntity);
             return true;
         }catch (Exception e){

@@ -18,7 +18,7 @@ public class PreguntaEntity {
     @Column(name = "texto")
     private String texto;
     @Column(name = "imagen")
-    private int imagen;
+    private String imagen;
     @Column(name = "respuesta")
     private String respuesta;
     @Column(name = "opcion1")
@@ -30,13 +30,13 @@ public class PreguntaEntity {
     @Column(name = "opcion4")
     private String opcion4;
     @Column(name = "estado")
-    private char estado;
+    private String estado;
 
     @OneToMany(mappedBy = "pregunta")
     private List<JuegoPreguntasEntity> juegoPreguntas;
 
-    @OneToOne(mappedBy = "pregunta")
-    private CategoriaContenidoEntity categoriaContenido;
+    //@OneToOne(mappedBy = "pregunta")
+   // private CategoriaContenidoEntity categoriaContenido;
 
 
 }

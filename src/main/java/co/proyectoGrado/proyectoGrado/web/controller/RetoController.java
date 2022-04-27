@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/challenge")
-
+@RequestMapping("/api/Reto")
 public class RetoController {
     private final RetoService retoService;
 
@@ -31,7 +30,7 @@ public class RetoController {
         return new ResponseEntity<>(retoService.get(tipo), HttpStatus.OK);
     }
 
-    @PostMapping()
+    @PostMapping("/save")
     public ResponseEntity<Boolean> save(@RequestBody Reto reto) {
         return new ResponseEntity<>(retoService.save(reto), HttpStatus.CREATED);
     }

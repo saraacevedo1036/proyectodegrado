@@ -15,7 +15,7 @@ public class Pregunta {
     @JsonProperty
     private String texto;
     @JsonProperty
-    private int imagen;
+    private String imagen;
     @JsonProperty
     private String respuesta;
     @JsonProperty

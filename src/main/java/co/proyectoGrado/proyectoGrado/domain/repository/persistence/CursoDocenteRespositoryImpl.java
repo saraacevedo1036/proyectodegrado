@@ -90,6 +90,13 @@ public class CursoDocenteRespositoryImpl implements CursoDocenteRepository {
         try {
             CursoEntity cursoEntity = cursoCrud.findById(cursoDocente.getIdCursos()).orElse(null);
             DocenteEntity docenteEntity = docenteCrud.findById(cursoDocente.getIdDocente()).orElse(null);
+
+            //TO DO
+           /* if (cursoEntity  ==null|| docenteEntity==null){
+                throw new Exception("error obteniendo las entidades para Curso Docente");
+
+            }*/
+
             CursoDocenteEntity cursoDocenteEntity = new CursoDocenteEntity(cursoDocente.getIdCursoDocente(),docenteEntity,cursoEntity);
             cursoDocenteEntity.setIdCursoDocente(cursoDocente.getIdCursoDocente());
             cursoDocenteEntity.setEstado(cursoDocente.isEstado() ? String.valueOf('t') : String.valueOf('f'));

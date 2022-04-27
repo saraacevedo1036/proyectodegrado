@@ -14,8 +14,7 @@ import java.util.List;
 public class PreguntaService {
 
     private final PreguntaRepository preguntaRepository;
-    @Autowired
-    private PreguntaCrud preguntasCrud;
+
 
     @Autowired
     public PreguntaService(PreguntaRepository preguntaRepository) {
@@ -23,14 +22,13 @@ public class PreguntaService {
     private final ModelMapper mapper = new ModelMapper();
 
     public List<Pregunta> getAll(){return preguntaRepository.getAll();}
-    public Pregunta get(int idPreguntas) {
-        return preguntaRepository.get(idPreguntas);
-    }
+
+    public Pregunta get(int idPreguntas) {return preguntaRepository.get(idPreguntas);}
 
     public boolean save(Pregunta pregunta) {
-        PreguntaEntity contenido = mapper.map(pregunta, PreguntaEntity.class);
+
         try {
-            preguntasCrud.save(contenido);
+            preguntaRepository.save(pregunta);
             return Boolean.TRUE;
         } catch (Exception e) {
             e.printStackTrace();

@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class RetoEntity {
 
+
     @Id
     @Column(name = "idreto")
     private int idReto;
@@ -24,12 +25,12 @@ public class RetoEntity {
     @Column(name = "comentario")
     private String comentario;
     @Column(name = "estado")
-    private char estado;
+    private String estado;
 
     @OneToMany(mappedBy = "reto")
     private List<EstudianteJuegoEntity> juegoEstudiantes;
 
-    @OneToOne(mappedBy = "reto")
-    private JuegoPreguntasEntity juegoPregunta;
+    //@OneToOne(mappedBy = "reto")
+   // private JuegoPreguntasEntity juegoPregunta;
 
 }
